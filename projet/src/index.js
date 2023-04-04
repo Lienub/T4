@@ -2,6 +2,7 @@
 // It creates the game and the main scene
 // It also imports all the necessary resources
 import Phaser from 'phaser';
+import MenuScene from './scenes/menuScene';
 import MainScene from './scenes/mainScene';
 
 // Creating the game
@@ -20,10 +21,9 @@ const config = {
             gravity: {y : 0},
         }
     },
-    scene: [MainScene]
+    scene: [MenuScene, MainScene]
 
 };
 
 
 const game = new Phaser.Game(config);
-
