@@ -1,3 +1,7 @@
+// Description: Player class
+// This class is used to create the player
+// It contains the player animations
+// It contains the player movements
 import Phaser from 'phaser';
 import idle from '../assets/img/player/pl_idle.png';
 import walkFront from '../assets/img/player/pl_frontWalk.png';
@@ -5,7 +9,13 @@ import walkBack from '../assets/img/player/pl_backWalk.png';
 import walkLeft from '../assets/img/player/pl_leftWalk.png';
 import walkRight from '../assets/img/player/pl_rightWalk.png';
 
+// Creating a class named Player
+// This class extends the Phaser.Physics.Arcade.Sprite class
+// This class contains the player animations
+// This class contains the player movements
 export default class Player extends Phaser.Physics.Arcade.Sprite {
+  // in the constructor, we create the player animations
+  // and we add the player to the scene
   constructor(scene, x, y, texture, frame) {
     super(scene, x, y, idle);
     this.scene = scene;
@@ -51,7 +61,9 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         frameRate: 30
     });
   }
-
+    // This function is used to load the player assets
+    // here, we load the player spritesheets composed of 30 frames of 70x70 pixels each
+    // and the player idle image
     static loadAssets(scene) {
         scene.load.image('idle', idle);
 
@@ -65,6 +77,10 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
     }
     
+    // This function is used to move the player
+    // It takes a direction as a parameter
+    // It plays the corresponding animation
+    // It sets the velocity of the player
     move(dir) {
         switch (dir) {
             case 'up':
@@ -90,6 +106,9 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         }
     }
 
+    // This function is used to stop the player
+    // It plays the idle animation
+    // It sets the velocity of the player to 0
     stop() {
         this.anims.play('idleFront_anim', true);
         this.setVelocity(0);
