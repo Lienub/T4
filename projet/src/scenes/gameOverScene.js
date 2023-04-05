@@ -4,6 +4,7 @@ import doorImg from '../assets/img/door.png';
 import petanqueImg from '../assets/img/petanque.png';
 import winImg from '../assets/img/crown.png';
 import monkImg from '../assets/img/monk.png';
+import ageImg from '../assets/img/age.png';
 
 export default class GameOverScene extends Phaser.Scene {
     constructor() {
@@ -26,6 +27,9 @@ export default class GameOverScene extends Phaser.Scene {
         else if(this.message == 'petanque'){
             this.load.image('petanque', petanqueImg);
         }
+        else if(this.message == 'age'){
+            this.load.image('age', ageImg);
+        }
 
         //si le message de win de data contient 'win' alors on affiche l'image de la couronne
         this.load.image('win', winImg);
@@ -45,8 +49,8 @@ export default class GameOverScene extends Phaser.Scene {
 
         // Afficher le bouton "RESTART"
         const restartText = this.add.text(
-            this.cameras.main.centerX,
-            this.cameras.main.height - 200,
+            this.game.config.width * 0.5,
+            this.game.config.height * 0.7,
             'RESTART',
             {
               fontSize: '64px',
@@ -65,7 +69,7 @@ export default class GameOverScene extends Phaser.Scene {
         let gameOverText = '';
 
         //Game over text
-        this.add.text(this.cameras.main.centerX-10, -50, 'GAME OVER', {
+        this.add.text(this.game.config.width*0.5, this.game.config.height*(-0.2), 'GAME OVER', {
             fontSize: '128px',
             fill: '#FF0000',
         }).setOrigin(0.5, 0.5);
@@ -73,13 +77,10 @@ export default class GameOverScene extends Phaser.Scene {
         //si le message de data contient 'porte' alors on affiche l'image de la porte
         if (this.message === 'door') {
             const door = this.add.image(
-              this.cameras.main.centerX,
-              this.cameras.main.centerY-50,
+                this.game.config.width*0.5,
+                this.game.config.height*0.5,
               'door'
             );
-            // Redimensionner l'image de la porte pour qu'elle s'adapte à la taille de la scène
-            const scaleX = this.cameras.main.width / door.width;
-            const scaleY = this.cameras.main.height / door.height;
             door.setScale(0.5).setScrollFactor(0);
 
             gameOverText += 'Vous êtes mort en traversant une porte!';
@@ -88,27 +89,38 @@ export default class GameOverScene extends Phaser.Scene {
         //si le message de data contient 'petanque' alors on affiche l'image correspondant
         else if(this.message === 'petanque'){
             const petanque = this.add.image(
-                this.cameras.main.centerX,
-                this.cameras.main.centerY-40,
+                this.game.config.width*0.5,
+                this.game.config.height*0.5,
                 'petanque'
                 );
-            // Redimensionner l'image pétanque pour qu'elle s'adapte à la taille de la scène
-            const scaleX = this.cameras.main.width / petanque.width;
-            const scaleY = this.cameras.main.height / petanque.height;
             petanque.setScale(0.5).setScrollFactor(0);
             gameOverText += 'Vous êtes mort en jouant à la pétanque!';
         }
 
+        //si le message de data contient 'age' alors on affiche l'image correspondant
+        else if(this.message === 'age'){
+            const age = this.add.image(
+                this.game.config.width*0.5,
+                this.game.config.height*0.5,
+                'age'
+                );
+            age.setScale(0.5).setScrollFactor(0);   
+            gameOverText += 'Vous êtes mort d\'un arrêt cardiaque!';
+        }
+
         //on affiche l'image du sang
-        const blood = this.add.image(
-        this.cameras.main.centerX,
-        this.cameras.main.centerY,
-        'blood'
-        );
+        if(this.message != 'age'){
+            const blood = this.add.image(
+            0,
+            0,
+            'blood'
+            );
+        }
+        
 
         //on affiche le texte
         this.add
-        .text(this.cameras.main.centerX, this.cameras.main.centerY + 150, gameOverText, {
+        .text(this.game.config.width*0.5, this.game.config.height*0.7, gameOverText, {
             fontSize: '32px',
             fill: '#fff',
         })
@@ -117,24 +129,24 @@ export default class GameOverScene extends Phaser.Scene {
     }
 
     winGame(){
-        let winGameTewt = 'Vous êtes devenu nôble!';
+        let winGameTewt = 'Vous êtes devenu noble!';
 
         //Winning game text
-        this.add.text(this.cameras.main.centerX-10, -50, 'WIN', {
+        this.add.text(this.game.config.width*0.5, this.game.config.height*(-0.2), 'WIN', {
             fontSize: '128px',
             fill: '#00CD60',
         }).setOrigin(0.5, 0.5);
 
         //on affiche l'image de la couronne
         const crown = this.add.image(
-        this.cameras.main.centerX,
-        this.cameras.main.centerY,
-        'win'
+            this.game.config.width*0.5,
+            this.game.config.height*0.5,
+            'win'
         );
 
         //on affiche le texte
         this.add
-        .text(this.cameras.main.centerX, this.cameras.main.centerY + 150, winGameTewt, {
+        .text(this.game.config.width*0.5, this.game.config.height*0.7, winGameTewt, {
             fontSize: '32px',
             fill: '#fff',
         })
@@ -145,7 +157,7 @@ export default class GameOverScene extends Phaser.Scene {
         let moineGameText = 'Vous êtes devenu moine!';
 
         //Winning game text
-        this.add.text(this.cameras.main.centerX-10, -80, 'MOINE', {
+        this.add.text(this.game.config.width*0.5, this.game.config.height*(-0.2), 'MOINE', {
             fontSize: '128px',
             fill: '#00B1CD',
         }).setOrigin(0.5, 0.5);
@@ -159,7 +171,7 @@ export default class GameOverScene extends Phaser.Scene {
 
         //on affiche le texte
         this.add
-        .text(this.cameras.main.centerX, this.cameras.main.centerY + 150, moineGameText, {
+        .text(this.game.config.width*0.5, this.game.config.height*0.7, moineGameText, {
             fontSize: '32px',
             fill: '#fff',
         })
