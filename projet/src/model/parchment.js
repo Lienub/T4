@@ -11,8 +11,11 @@ export default class Parchment extends Phaser.Physics.Arcade.Sprite {
         this.image.setOrigin(0.5);
         this.image.setDepth(1);
         
-        if(txt == "chaussure"){
-            txt = "Vous avez vendu 5 chaussures pour 2 poulets!";
+        if(txt == "argent"){
+            txt = "Grâce à cette offre vous gagnez 100 écus!";
+        }
+        else if (txt == "pain"){
+            txt = "Vous avez accepter d'entreprendre l'ouverture d'une boulangerie pour tout votre argent!";
         }
 
         this.text = this.scene.add.text(x+10, y-20, txt, {

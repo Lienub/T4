@@ -1,0 +1,69 @@
+@startuml
+
+class Pnj extends Phaser.Physics.Arcade.Sprite{
+}
+
+class Bubble extends Phaser.Physics.Arcade.Sprite {
+
+}
+class Player extends Phaser.Physics.Arcade.Sprite {
+    - scene: Phaser.Scene
+    + constructor(scene: Phaser.Scene, x: number,
+    y: number texture: string, frame: string)
+    + static loadAssets(scene: Phaser.Scene): void
+    + move(dir: string): void
+    + stop(): void
+}
+class HitBox extends Phaser.GameObjects.Rectangle
+ {
+  - scene: Phaser.Scene
+  + constructor(scene: Phaser.Scene, x: number, y: number,
+   width: number, height: number,color: number, alpha: number)
+}
+
+class MainScene extends Phaser.Scene {
+  + MainScene()
+  - player: Player
+  - pnj: Pnj
+  - pnj2: Pnj
+  - pnj3: Pnj
+  - pnj4: Pnj
+  - pnj5: Pnj
+  - hitBox: HitBox
+  - hitBox2: HitBox
+  - hitBox3: HitBox
+  - hitBox4: HitBox
+}
+class GameOverScene extends Phaser.Scene{
+  + GameOverScene()
+  + gameOver()
+  + winGame()
+  + moineGame()
+}
+class MenuScene extends Phaser.Scene {}
+class SecondGameScene extends Phaser.Scene{
+  + SecondGameScene()
+  - player : Player
+}
+class ThirdGameScene extends Phaser.Scene{
+ + ThirdGameScene()
+ - player : Player
+ - pnj1: Pnj
+ - pnj2: Pnj
+ - pnj3: Pnj
+ - pnj4: Pnj
+ - pnj5: Pnj
+}
+MainScene -> Player
+MainScene -> Pnj
+MainScene -> HitBox
+SecondGameScene -> Player
+SecondGameScene -> Pnj
+SecondGameScene -> HitBox
+ThirdGameScene -> Player
+ThirdGameScene -> Pnj
+ThirdGameScene -> HitBox
+Pnj -> Bubble : creates
+
+
+@enduml
