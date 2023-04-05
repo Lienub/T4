@@ -3,13 +3,14 @@ import pnj1 from '../assets/img/pnj.png';
 import Dialog from '../assets/utils/bubble';
 
 export default class Pnj extends Phaser.Physics.Arcade.Sprite {
-  constructor(scene, x, y, texture, dialog, choice, w_type, d_type) {
+  constructor(scene, x, y, texture, dialog, choice, w_type, d_type,player) {
     super(scene, x, y, texture);
     this.dialogText = dialog;
     this.scene = scene;
     this.choice = choice;
     this.w_type = w_type;
     this.d_type = d_type;
+    this.player = player;
 
     this.scene.add.existing(this);
 
@@ -50,7 +51,7 @@ export default class Pnj extends Phaser.Physics.Arcade.Sprite {
        if (this.scene.input.keyboard.checkDown(this.scene.input.keyboard.addKey('E'), 250) && !this.onDialog) {
         this.onDialog = true;  
         // Show the dialog
-          this.dialog = new Dialog(this.scene, this, this.dialogText, this.choice, this.w_type, this.d_type);
+          this.dialog = new Dialog(this.scene, this, this.dialogText, this.choice, this.w_type, this.d_type,this.player);
           this.scene.player.immovable = true;
         } 
         this.onDialog = false;

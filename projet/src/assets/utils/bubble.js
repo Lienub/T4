@@ -1,11 +1,12 @@
 export default class Dialog {
-  constructor(scene, pnj, text, isChoice, scenario, death) {
+  constructor(scene, pnj, text, isChoice, scenario, death,player) {
     // Store reference to scene and PNJ
     this.scene = scene;
     this.pnj = pnj;
     this.isChoice = isChoice;
     this.scenario = scenario;
     this.death = death;
+    this.player = player;
 
     //set the coordinates of the dialog box
     this.x = 12;
@@ -91,10 +92,15 @@ export default class Dialog {
       else if(this.scenario == 2){
         console.log("type 2")
         this.scene.scene.start('GameOverScene', { win: 'monk', message: 'door' });
-
       } 
-    }
-  } 
+      else if(this.scenario == 4){
+        console.log("type 4")
+        console.log(this.player);
+        console.log("44");
+        this.scene.scene.start('SecondGameScene', {money : this.player.money, age : this.player.age});
+      }
+  }
+} 
 
   destroy() {
 
