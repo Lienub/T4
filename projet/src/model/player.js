@@ -16,11 +16,11 @@ import walkRight from '../assets/img/player/pl_rightWalk.png';
 export default class Player extends Phaser.Physics.Arcade.Sprite {
   // in the constructor, we create the player animations
   // and we add the player to the scene
-  constructor(scene, x, y, texture, frame) {
+  constructor(scene, x, y, money, age, texture, frame) {
     super(scene, x, y, idle);
     this.scene = scene;
-    this.money = 0;
-    this.age = 12;
+    this.money = money;
+    this.age = age;
 
 
     this.scene.add.existing(this);
