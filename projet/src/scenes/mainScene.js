@@ -46,7 +46,7 @@ export default class MainScene extends Phaser.Scene {
     
     // Action lors du clic sur le bouton
     button.on('pointerdown', () => {
-      this.scene.start('GameOverScene', { win: 'monk', message: 'door' });
+      this.scene.start('GameOverScene', { win: 'false', message: 'age' });
     });
 
 
