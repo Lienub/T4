@@ -17,7 +17,7 @@ export default class MainScene extends Phaser.Scene {
   constructor() {
     super({ key: 'MainScene' });
     //age de départ
-    this.age = 60;
+    this.age = 12;
     //argent de départ
     this.money = 0;
   }
@@ -42,11 +42,6 @@ export default class MainScene extends Phaser.Scene {
 
     // décalage du texte pour chaque rectangle
     const textOffset = 20;
-
-
-
-    // Création du timer de 3 secondes
-    this.timer = this.time.addEvent({delay: 2000, loop: true});
 
     this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, 'bgDefault');
 
@@ -87,7 +82,7 @@ export default class MainScene extends Phaser.Scene {
 
     // Créer une minuterie qui appelle la fonction incrementAge toutes les 2 secondes
     this.time.addEvent({
-      delay: 2000, // 2 secondes
+      delay: 2500, // 2,5 secondes
       callback: this.incrementAge,
       callbackScope: this,
       loop: true // répéter indéfiniment
