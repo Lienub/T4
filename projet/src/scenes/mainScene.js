@@ -37,12 +37,18 @@ export default class MainScene extends Phaser.Scene {
     // décalage du texte pour chaque rectangle
     const textOffset = 20;
 
+    // age
+    this.age = 12;
+    // money 
+    this.money = 0;
+
+
     // Création du timer de 3 secondes
-    this.timer = this.time.addEvent({delay: 3000, loop: true});
+    this.timer = this.time.addEvent({delay: 2000, loop: true});
 
     this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, 'bgDefault');
 
-    this.player = new Player(this, 100, 450);
+    this.player = new Player(this, 100, 450, this.money, this.age);
     console.log(this.player);
     // Création du rectangle de fond pour le texte
     const rectMoney = this.add.rectangle(40, 25,  50, 15, 0xffffff);
@@ -89,7 +95,13 @@ export default class MainScene extends Phaser.Scene {
     
     // Action lors du clic sur le bouton
     nextScene_button.on('pointerdown', () => {
-      this.scene.start('SecondGameScene', {player : this.player});});
+      console.log('Money');
+      console.log(this.player.money);
+      console.log(this.player.getMoney());
+      console.log('Age');
+      console.log(this.player.age);
+      console.log(this.player.getAge());
+      this.scene.start('SecondGameScene', {money : this.player.money, age : this.player.age});});
   }
     
 
@@ -101,7 +113,7 @@ export default class MainScene extends Phaser.Scene {
     this.money = this.player.getMoney();
 
     // Si le time est à 3
-    if (this.timer.getProgress() === 3) {
+    if (this.timer.getProgress() === 2) {
       // On reset le timer
       this.timer.reset();
       this.age = this.age+1;
