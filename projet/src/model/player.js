@@ -19,6 +19,9 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   constructor(scene, x, y, texture, frame) {
     super(scene, x, y, idle);
     this.scene = scene;
+    this.money = 0;
+    this.age = 12;
+
 
     this.scene.add.existing(this);
 
@@ -61,6 +64,21 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         frameRate: 30
     });
   }
+
+
+     getAge(){
+        return this.age;
+    }
+
+        
+    getMoney(){
+        return this.money;
+    }
+
+    addMoney(money){
+        this.money += money;
+    }
+
     // This function is used to load the player assets
     // here, we load the player spritesheets composed of 30 frames of 70x70 pixels each
     // and the player idle image

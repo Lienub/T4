@@ -19,15 +19,49 @@ export default class MainScene extends Phaser.Scene {
 
   preload() {
     this.load.image('bgDefault', bgDefault);
-  
+    
     Player.loadAssets(this);
     this.load.image('pnj', pnjImg);
     PNJ.loadAssets(this);
   }
 
   create() {
+    //Style des textes dans les rectangles
+      const style = {
+      fontFamily: 'Arial',
+      fontSize: '24',
+      color: '#000000',
+      align: 'center',
+    }
+
+    // décalage du texte pour chaque rectangle
+    const textOffset = 20;
+
+    // Création du timer de 3 secondes
+    this.timer = this.time.addEvent({delay: 3000, loop: true});
+
     this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, 'bgDefault');
-    this.player = new Player(this, 400, 350);
+
+    this.player = new Player(this, 100, 450);
+    console.log(this.player);
+    // Création du rectangle de fond pour le texte
+    const rectMoney = this.add.rectangle(40, 25,  50, 15, 0xffffff);
+    // Création du texte
+    this.money = this.player.getMoney();
+    const textMoney = this.add.text(rectMoney.x, rectMoney.y - textOffset, this.money, style);
+    // centrer le texte par rapport au rectangle
+    Phaser.Display.Align.In.Center(textMoney, rectMoney);
+
+
+    // Création du rectangle de fond pour le texte
+    const rectAge = this.add.rectangle(100, 25,  50, 15, 0xffffff);
+    // Création du texte
+    this.age = this.player.getAge();
+    const textAge = this.add.text(rectAge.x, rectAge.y - textOffset, this.age, style);
+    // centrer le texte par rapport au rectangle
+    Phaser.Display.Align.In.Center(textAge, rectAge);
+
+    //this.player = new Player(this, 400, 350);
     this.pnj = new PNJ(this, 70, 300, 'pnj', "Saviez vous que nous étions près de 4000 habitants, ici même, à Amboise.");
     this.pnj2 = new PNJ(this, 400, 250, 'pnj', "Vous avez remarqué, la vie d'un moine se concentre sur ce qu'il y a de réellement essentiel dans la vie.");
     this.pnj3 = new PNJ(this, 300, 100, 'pnj', "Un petit tour à cheval, cela vous dit ?");
@@ -55,13 +89,25 @@ export default class MainScene extends Phaser.Scene {
     
     // Action lors du clic sur le bouton
     nextScene_button.on('pointerdown', () => {
-      this.scene.start('SecondGameScene');
-    });
-
+      this.scene.start('SecondGameScene', {player : this.player});});
   }
     
 
-  update() {
+  // Updating the scene
+  // here, we update the player movements
+  // based on the keyboard inputs,
+  // we call the player.move() function (cf model/player.js)
+  update(time,delta) {
+    this.money = this.player.getMoney();
+
+    // Si le time est à 3
+    if (this.timer.getProgress() === 3) {
+      // On reset le timer
+      this.timer.reset();
+      this.age = this.age+1;
+      // On ajoute 1 à l'âge du joueur
+    }
+
     const cursors = this.input.keyboard.createCursorKeys();
     if(cursors.left.isDown) {
       this.player.move('left');
