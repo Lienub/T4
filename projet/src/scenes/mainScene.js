@@ -17,7 +17,7 @@ export default class MainScene extends Phaser.Scene {
   constructor() {
     super({ key: 'MainScene' });
     //age de départ
-    this.age = 60;
+    this.age = 12;
     //argent de départ
     this.money = 0;
   }
@@ -52,7 +52,7 @@ export default class MainScene extends Phaser.Scene {
 
     //this.pnjDemo = new PNJ(this, 493, 316, 'pnj', "Bonjour, je suis un PNJ", true, 1, 'door');
 
-    this.player = new Player(this, 100, 450, this.money, this.age,this.noble);
+    this.player = new Player(this, 100, 400, this.money, this.age,false);
     //console.log(this.player);
     // Création du rectangle de fond pour le texte
     this.rectMoney = this.add.rectangle(40, 25,  50, 15, 0xffffff);

@@ -21,6 +21,7 @@ export default class ThirdGameScene extends Phaser.Scene {
     console.log(data.money, data.age);
     this.money = data.money;
     this.age = data.age;
+    this.noble = data.noble;
   }
 
   create() {
