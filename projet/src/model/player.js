@@ -24,8 +24,8 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
     this.scene.physics.add.existing(this);
 
-    this.body.setSize(70, 70);
-    this.body.setOffset(16, 16);
+    // Set the hitbox to be the same size as the sprite
+    this.body.setSize(this.body.width, this.body.height);
 
     this.scene.anims.create({
         key: 'walkFront_anim',
@@ -82,27 +82,43 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     // It plays the corresponding animation
     // It sets the velocity of the player
     move(dir) {
-        switch (dir) {
-            case 'up':
-                this.anims.play('walkBack_anim', true);
-                this.setVelocityY(-100);
-                break;
-            case 'down':
-                this.anims.play('walkFront_anim', true);
-                this.setVelocityY(100);
-                break;
+
+        switch(dir) {
             case 'left':
                 this.anims.play('walkLeft_anim', true);
-                this.setVelocityX(-100);
+                this.setVelocityX(-200);
+                this.setVelocityY(0);
                 break;
             case 'right':
                 this.anims.play('walkRight_anim', true);
-                this.setVelocityX(100);
+                this.setVelocityX(200);
+                this.setVelocityY(0);
                 break;
-            default:
-                this.anims.play('idleFront_anim', true);
-                this.setVelocity(0);
+            case 'up':
+                this.anims.play('walkBack_anim', true);
+                this.setVelocityY(-200);
+                this.setVelocityX(0);
                 break;
+            case 'down':
+                this.anims.play('walkFront_anim', true);
+                this.setVelocityY(200);
+                this.setVelocityX(0);
+                break;
+        }
+
+          // Get the bounds of the game world
+        const { width, height } = this.scene.scale.gameSize;
+
+        // Check if the player has gone out of bounds
+        if (this.x < 0) {
+            this.x = width;
+        } else if (this.x > width) {
+            this.x = 0;
+        }
+        if (this.y < 0) {
+            this.y = height;
+        } else if (this.y > height) {
+            this.y = 0;
         }
     }
 
