@@ -85,7 +85,7 @@ export default class Dialog {
       if(this.scenario == 0){
         console.log("type 0")
         //start gameover scene si le joueur est éligible à devenir noble
-        if(this.player.noble == true){
+        if(this.scene.noble == true){
           this.scene.scene.start('GameOverScene', { win: 'win' });
         }
         //sinon il meurt de vieillesse
@@ -119,7 +119,7 @@ export default class Dialog {
         console.log("type 5")
         console.log(this.player.money);
         //L'argent est ajouté au joueur
-        this.player.money += 100;
+        this.scene.incrementMoney(100);
         //Le joueur devient éligible à devenir noble
         this.player.noble = true;
         //Un objet Parchemin avec le texte adéquat est affiché
@@ -135,7 +135,7 @@ export default class Dialog {
       else if(this.scenario == 6){
         console.log("type 6")
         //L'argent est ajouté au joueur
-        this.player.money = 0;
+        this.scene.incrementMoney(-99999);
         this.player.noble = false;
         //Un objet Parchemin avec le texte adéquat est affiché 
         this.scene.parchemin = new Parchment(this.scene, 480, 360, "pain");
