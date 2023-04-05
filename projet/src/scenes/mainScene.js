@@ -5,6 +5,7 @@ import PNJ from '../model/pnj';
 //import Bubble from '../model/bubble';
 import pnjImg from '../assets/img/pnj.png';
 import HitBox from '../assets/utils/hitBox';
+import Parchment from '../model/parchment';
 
 
 
@@ -23,6 +24,7 @@ export default class MainScene extends Phaser.Scene {
     Player.loadAssets(this);
     this.load.image('pnj', pnjImg);
     PNJ.loadAssets(this);
+    Parchment.loadAssets(this);
   }
 
   create() {
@@ -86,7 +88,25 @@ export default class MainScene extends Phaser.Scene {
     
     // Action lors du clic sur le bouton
     button.on('pointerdown', () => {
-      this.scene.start('GameOverScene', { win: 'false', message: 'age' });
+      this.scene.start('GameOverScene', { win: 'false', message: 'door' });
+    });
+
+
+    // Création du bouton
+    const buttonParchemin = this.add.text(600, 50, 'Parchemin', { fill: '#0f0' }).setOrigin(0.5);
+    buttonParchemin.setInteractive({ useHandCursor: true });
+    
+    // Action lors du clic sur le bouton
+    buttonParchemin.on('pointerdown', () => {
+      console.log("parchemin");
+      //initiale l'objet parchemin et lui passe le texte en paramètre
+      this.parchemin = new Parchment(this, 600, 150, "chaussure");
+      //affiche le parchemin
+      if(this.parchemin.visible === false){
+        this.parchemin.show();
+      } else{
+        this.parchemin.hide();
+      }
     });
 
 

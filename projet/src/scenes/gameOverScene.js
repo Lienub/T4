@@ -129,24 +129,24 @@ export default class GameOverScene extends Phaser.Scene {
     }
 
     winGame(){
-        let winGameTewt = 'Vous êtes devenu nôble!';
+        let winGameTewt = 'Vous êtes devenu noble!';
 
         //Winning game text
-        this.add.text(this.game.config.width*0.5, this.game.config.height*0, 'WIN', {
+        this.add.text(this.game.config.width*0.5, this.game.config.height*(-0.2), 'WIN', {
             fontSize: '128px',
             fill: '#00CD60',
         }).setOrigin(0.5, 0.5);
 
         //on affiche l'image de la couronne
         const crown = this.add.image(
-        this.cameras.main.centerX,
-        this.cameras.main.centerY,
-        'win'
+            this.game.config.width*0.5,
+            this.game.config.height*0.5,
+            'win'
         );
 
         //on affiche le texte
         this.add
-        .text(this.game.config.width*0.5, this.game.config.height*1.5, winGameTewt, {
+        .text(this.game.config.width*0.5, this.game.config.height*0.7, winGameTewt, {
             fontSize: '32px',
             fill: '#fff',
         })
@@ -157,7 +157,7 @@ export default class GameOverScene extends Phaser.Scene {
         let moineGameText = 'Vous êtes devenu moine!';
 
         //Winning game text
-        this.add.text(this.game.config.width*0.5, this.game.config.height*0.9, 'MOINE', {
+        this.add.text(this.game.config.width*0.5, this.game.config.height*(-0.2), 'MOINE', {
             fontSize: '128px',
             fill: '#00B1CD',
         }).setOrigin(0.5, 0.5);
@@ -171,7 +171,7 @@ export default class GameOverScene extends Phaser.Scene {
 
         //on affiche le texte
         this.add
-        .text(this.game.config.width*0.5, this.game.config.height*1.5, moineGameText, {
+        .text(this.game.config.width*0.5, this.game.config.height*0.7, moineGameText, {
             fontSize: '32px',
             fill: '#fff',
         })
