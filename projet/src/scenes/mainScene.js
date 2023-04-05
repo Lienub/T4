@@ -17,7 +17,7 @@ export default class MainScene extends Phaser.Scene {
   constructor() {
     super({ key: 'MainScene' });
     //age de départ
-    this.age = 60;
+    this.age = 12;
     //argent de départ
     this.money = 0;
   }
@@ -94,50 +94,6 @@ export default class MainScene extends Phaser.Scene {
       callbackScope: this,
       loop: true // répéter indéfiniment
     });
-    /*
-    // Création du bouton
-    const button = this.add.text(400, 50, 'Game Over', { fill: '#0f0' }).setOrigin(0.5);
-    button.setInteractive({ useHandCursor: true });
-    
-    // Action lors du clic sur le bouton
-    button.on('pointerdown', () => {
-      this.scene.start('GameOverScene', { win: 'false', message: 'door' });
-    });
-
-    
-    // Création du bouton
-    const buttonParchemin = this.add.text(600, 50, 'Parchemin', { fill: '#0f0' }).setOrigin(0.5);
-    buttonParchemin.setInteractive({ useHandCursor: true });
-    
-    // Action lors du clic sur le bouton
-    buttonParchemin.on('pointerdown', () => {
-      console.log("parchemin");
-      //initiale l'objet parchemin et lui passe le texte en paramètre
-      this.parchemin = new Parchment(this, 600, 150, "chaussure");
-      this.onDialog = true;
-
-    });
-
-
-    const nextScene_button = this.add.text(200, 50, 'Next Scene', { fill: '#0f0' }).setOrigin(0.5);
-    nextScene_button.setInteractive({ useHandCursor: true });
-    
-    // Action lors du clic sur le bouton
-    nextScene_button.on('pointerdown', () => {
-      console.log('Money');
-      console.log(this.player.money);
-      console.log(this.player.getMoney());
-      console.log('Age');
-      console.log(this.player.age);
-      console.log(this.player.getAge());
-      this.scene.start('SecondGameScene', {money : this.player.money, age : this.player.age});});
-  }*/
-    
-
-  // Updating the scene
-  // here, we update the player movements
-  // based on the keyboard inputs,
-  // we call the player.move() function (cf model/player.js)
 }
 
 incrementAge() {
@@ -146,6 +102,15 @@ incrementAge() {
   this.textAge.setText(this.age);
   this.player.setAge(this.age);
 }
+
+incrementMoney(amount) {
+  this.money += amount;
+  console.log("Money : " + this.money);
+  this.player.addMoney(this.money);
+  this.textMoney.setText(this.money);
+}
+
+
 
 update() {
     this.money = this.player.getMoney();

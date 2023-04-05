@@ -58,9 +58,9 @@ console.log(this.player);
 const rectMoney = this.add.rectangle(40, 25, 50, 15, 0xffffff);
 // Création du texte
 const money = this.player.getMoney();
-const textMoney = this.add.text(rectMoney.x, rectMoney.y - textOffset, money, style);
+this.textMoney = this.add.text(rectMoney.x, rectMoney.y - textOffset, money, style);
 // centrer le texte par rapport au rectangle
-Phaser.Display.Align.In.Center(textMoney, rectMoney);
+Phaser.Display.Align.In.Center(this.textMoney, rectMoney);
 
 // Création du rectangle de fond pour le texte
 const rectAge = this.add.rectangle(100, 25, 50, 15, 0xffffff);
@@ -85,6 +85,14 @@ nextScene_button.on('pointerdown', () => {
   this.scene.start('ThirdGameScene', { money: this.player.money, age: this.player.age });
 });
     }
+
+    incrementMoney(amount) {
+      this.money += amount;
+      console.log("Money : " + this.money);
+      this.player.addMoney(this.money);
+      this.textMoney.setText(this.money);
+    }
+
 
     // Updating the scene
     // here, we update the player movements

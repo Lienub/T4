@@ -37,6 +37,12 @@ export default class ThirdGameScene extends Phaser.Scene {
     // décalage du texte pour chaque rectangle
     const textOffset = 20;
 
+    this.noble = false;
+
+    if(this.money >= 200){
+      this.noble = true;
+    }
+
     // Création du timer de 3 secondes
     this.timer = this.time.addEvent({ delay: 3000, loop: true });
 
@@ -83,6 +89,20 @@ export default class ThirdGameScene extends Phaser.Scene {
     button.on('pointerdown', () => {
       this.scene.start('GameOverScene', { message: '' });
     });}
+
+    incrementMoney(amount) {
+      this.money += amount;
+      console.log("Money : " + this.money);
+      this.player.addMoney(this.money);
+      this.textMoney.setText(this.money);
+
+      if(this.money >= 200){
+        this.noble = true;
+      }
+      else{
+        this.noble = false;
+      }
+    }
     
 
     // Updating the scene
