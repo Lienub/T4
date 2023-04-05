@@ -1,6 +1,9 @@
 import Phaser from 'phaser';
 import bc from '../assets/img/bg_2.png';
+import PNJ from '../model/pnj';
 import Player from '../model/player';
+import pnjImg from '../assets/img/pnj.png';
+
 
 export default class SecondGameScene extends Phaser.Scene {
 
@@ -20,8 +23,8 @@ export default class SecondGameScene extends Phaser.Scene {
     preload() {
         this.load.image('bg', bc);
         Player.loadAssets(this);
-
-
+        this.load.image('pnj', pnjImg);
+        PNJ.loadAssets(this);
     }
 
     create() {
@@ -33,6 +36,7 @@ const style = {
   color: '#000000',
   align: 'center',
 };
+
 
 // décalage du texte pour chaque rectangle
 const textOffset = 20;
@@ -70,6 +74,12 @@ Phaser.Display.Align.In.Center(textAge, rectAge);
 const nextScene_button = this.add.text(200, 50, 'Next Scene', { fill: '#0f0' }).setOrigin(0.5);
 nextScene_button.setInteractive({ useHandCursor: true });
 console.log('After create 2ème scène');
+
+this.pnj1 = new PNJ(this,860,500,'pnj',"Il se déroule, demain, un séminaire d'apprentissage de la vie spirituel des moines. Souhaitez vous vous y rendre ?",true,2,);
+this.pnj2 = new PNJ(this,130,250,'pnj',"Oh, l'ami, ça fait longtemps, voulez-vous passer boire le thé chez moi ?",true);
+this.pnj3 = new PNJ(this,580,235,'pnj',"Lors du marché de demain, de nombreuses familles de noble des terres voisines arriveront, si j'étais vous, je préparerais mes meilleurs création afin de leur vendre. Se préparer pour le marché ??",true,0);
+this.pnj4 = new PNJ(this,880,300,'pnj',"On dit que le fils du roi n'est guère intéressé par sa succession");
+this.pnj5 = new PNJ(this,350,400,'pnj',"Je vous double votre salaire annuel si vous tuez le mari de ma soeur.",true,1);
 
 // Action lors du clic sur le bouton
 nextScene_button.on('pointerdown', () => {
