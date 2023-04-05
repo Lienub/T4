@@ -16,6 +16,10 @@ import Parchment from '../model/parchment';
 export default class MainScene extends Phaser.Scene {
   constructor() {
     super({ key: 'MainScene' });
+    //age de départ
+    this.age = 60;
+    //argent de départ
+    this.money = 0;
   }
   preload() {
     this.load.image('bgDefault', bgDefault);
@@ -39,10 +43,6 @@ export default class MainScene extends Phaser.Scene {
     // décalage du texte pour chaque rectangle
     const textOffset = 20;
 
-    // age
-    this.age = 12;
-    // money 
-    this.money = 0;
 
 
     // Création du timer de 3 secondes
@@ -52,24 +52,24 @@ export default class MainScene extends Phaser.Scene {
 
     //this.pnjDemo = new PNJ(this, 493, 316, 'pnj', "Bonjour, je suis un PNJ", true, 1, 'door');
 
-    this.player = new Player(this, 100, 450, this.money, this.age,false);
+    this.player = new Player(this, 100, 450, this.money, this.age,this.noble);
     //console.log(this.player);
     // Création du rectangle de fond pour le texte
-    const rectMoney = this.add.rectangle(40, 25,  50, 15, 0xffffff);
+    this.rectMoney = this.add.rectangle(40, 25,  50, 15, 0xffffff);
     // Création du texte
     this.money = this.player.getMoney();
-    const textMoney = this.add.text(rectMoney.x, rectMoney.y - textOffset, this.money, style);
+    this.textMoney = this.add.text(this.rectMoney.x, this.rectMoney.y - textOffset, this.money, style);
     // centrer le texte par rapport au rectangle
-    Phaser.Display.Align.In.Center(textMoney, rectMoney);
+    Phaser.Display.Align.In.Center(this.textMoney, this.rectMoney);
 
 
     // Création du rectangle de fond pour le texte
-    const rectAge = this.add.rectangle(100, 25,  50, 15, 0xffffff);
+    this.rectAge = this.add.rectangle(100, 25,  50, 15, 0xffffff);
     // Création du texte
     this.age = this.player.getAge();
-    const textAge = this.add.text(rectAge.x, rectAge.y - textOffset, this.age, style);
+    this.textAge = this.add.text(this.rectAge.x, this.rectAge.y - textOffset, this.age, style);
     // centrer le texte par rapport au rectangle
-    Phaser.Display.Align.In.Center(textAge, rectAge);
+    Phaser.Display.Align.In.Center(this.textAge, this.rectAge);
 
     //this.player = new Player(this, 400, 350);
     this.pnj = new PNJ(this, 70, 300, 'pnj', "Saviez vous que nous étions près de 4000 habitants, ici même, à Amboise.",false);
@@ -84,6 +84,14 @@ export default class MainScene extends Phaser.Scene {
     this.hitBox3 = new HitBox(this, 262 + (206/2), 0 + (18/2), 206, 18, 0x000000, 0);
     this.hitBox4 = new HitBox(this, 3 + (959/2), 420 + (280/2), 959, 280, 0x000000, 0);
     
+
+    // Créer une minuterie qui appelle la fonction incrementAge toutes les 2 secondes
+    this.time.addEvent({
+      delay: 2000, // 2 secondes
+      callback: this.incrementAge,
+      callbackScope: this,
+      loop: true // répéter indéfiniment
+    });
     /*
     // Création du bouton
     const button = this.add.text(400, 50, 'Game Over', { fill: '#0f0' }).setOrigin(0.5);
@@ -129,15 +137,19 @@ export default class MainScene extends Phaser.Scene {
   // based on the keyboard inputs,
   // we call the player.move() function (cf model/player.js)
 }
-update(time,delta) {
-    this.money = this.player.getMoney();
 
-    // Si le time est à 3
-    if (this.timer.getProgress() === 2) {
-      // On reset le timer
-      this.timer.reset();
-      this.age = this.age+1;
-      // On ajoute 1 à l'âge du joueur
+incrementAge() {
+  this.age += 1;
+  console.log("Age : " + this.age);
+  this.textAge.setText(this.age);
+  this.player.setAge(this.age);
+}
+
+update() {
+    this.money = this.player.getMoney();
+    console.log(this.player.getAge());
+    if (this.player.getAge() > 62){
+      this.scene.start('GameOverScene', { win: 'false', message: 'age' });
     }
 
     const cursors = this.input.keyboard.createCursorKeys();

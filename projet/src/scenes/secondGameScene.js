@@ -40,7 +40,6 @@ const style = {
 
 // décalage du texte pour chaque rectangle
 const textOffset = 20;
-
 // Création du timer de 3 secondes
 this.timer = this.time.addEvent({ delay: 3000, loop: true });
 
