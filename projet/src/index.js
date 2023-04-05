@@ -24,7 +24,7 @@ const config = {
             gravity: {y : 0},
         }
     },
-    scene: [MenuScene, MainScene, GameOverScene, SecondGameScene, ThirdGameScene]
+    scene: [MainScene, GameOverScene, SecondGameScene, ThirdGameScene, MenuScene]
 
 };
 
