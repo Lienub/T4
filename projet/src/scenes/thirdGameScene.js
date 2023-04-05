@@ -37,9 +37,6 @@ export default class ThirdGameScene extends Phaser.Scene {
     // décalage du texte pour chaque rectangle
     const textOffset = 20;
 
-    // Création du timer de 3 secondes
-    this.timer = this.time.addEvent({ delay: 3000, loop: true });
-
     // afficher l'image de fond
     this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, 'bgscene');
 
@@ -82,7 +79,23 @@ export default class ThirdGameScene extends Phaser.Scene {
     // Action lors du clic sur le bouton
     button.on('pointerdown', () => {
       this.scene.start('GameOverScene', { message: '' });
-    });}
+    });
+  
+   // Créer une minuterie qui appelle la fonction incrementAge toutes les 2 secondes
+   this.time.addEvent({
+    delay: 2500, // 2 secondes
+    callback: this.incrementAge,
+    callbackScope: this,
+    loop: true // répéter indéfiniment
+  });
+}
+
+incrementAge() {
+  this.age += 1;
+  console.log("Age : " + this.age);
+  this.textAge.setText(this.age);
+  this.player.setAge(this.age);
+}
     
 
     // Updating the scene
@@ -90,6 +103,12 @@ export default class ThirdGameScene extends Phaser.Scene {
     // based on the keyboard inputs,
     // we call the player.move() function (cf model/player.js)
   update() {
+    this.money = this.player.getMoney();
+    console.log(this.player.getAge());
+    if (this.player.getAge() > 62){
+      this.scene.start('GameOverScene', { win: 'false', message: 'age' });
+    }
+
     const cursors = this.input.keyboard.createCursorKeys();
     if(cursors.left.isDown) {
       this.player.move('left');
