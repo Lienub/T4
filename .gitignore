@@ -1,4 +1,7 @@
+node_modules
+projet/dist/main.js
 /projet/node_modules/
 /projet/dist/
 /projet/.webpack-cache/
 /projet/.idea/
+>>>>>>> 95ddfe3991384e56e8ac66b9f0d3d81c1cb7c5df

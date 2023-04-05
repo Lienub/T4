@@ -47,8 +47,8 @@ export default class MainScene extends Phaser.Scene {
 
     //this.pnjDemo = new PNJ(this, 493, 316, 'pnj', "Bonjour, je suis un PNJ", true, 1, 'door');
 
-    this.player = new Player(this, 100, 375, this.money, this.age);
-    console.log(this.player);
+    this.player = new Player(this, 100, 400, this.money, this.age,false);
+    //console.log(this.player);
     // Création du rectangle de fond pour le texte
     this.rectMoney = this.add.rectangle(40, 25,  50, 15, 0xffffff);
     // Création du texte
@@ -70,8 +70,8 @@ export default class MainScene extends Phaser.Scene {
     this.pnj = new PNJ(this, 70, 300, 'pnj', "Saviez vous que nous étions près de 4000 habitants, ici même, à Amboise.",false);
     this.pnj2 = new PNJ(this, 400, 250, 'pnj', "Vous avez remarqué, la vie d'un moine se concentre sur ce qu'il y a de réellement essentiel dans la vie.",false);
     this.pnj3 = new PNJ(this, 300, 100, 'pnj', "Un petit tour à cheval, cela vous dit ?",true,4,'',this.player);
-    this.pnj4 = new PNJ(this, 600, 300, 'pnj', "Un nouveau marché s'offre à moi. Souhaite tu me rejoindre dans la fabrication du pain ? L'accompagner afin de devenir boulanger ?",true, 6);
-    this.pnj5 = new PNJ(this, 700, 400, 'pnj', "J'aimerais vous acheter 5 chaussures, est-ce possible ?",true, 5);
+    this.pnj4 = new PNJ(this, 600, 300, 'pnj', "Un nouveau marché s'offre à moi. Souhaite tu me rejoindre dans la fabrication du pain ? L'accompagner afin de devenir boulanger ?",true,6,'',this.player);
+    this.pnj5 = new PNJ(this, 700, 400, 'pnj', "J'aimerais vous acheter 5 chaussures, est-ce possible ?",true, 5,'',this.player);
 
     //Creating the hitboxes
     this.hitBox = new HitBox(this, 132, 142, 264, 284, 0x000000, 0);
