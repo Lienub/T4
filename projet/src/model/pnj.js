@@ -1,33 +1,29 @@
-import pnj1 from '../assets/img/pnj.png';
+import pnj from '../assets/img/pnj.png';
 import Bubble from "../model/bubble";
 
 export default class Pnj extends Phaser.Physics.Arcade.Sprite {
-  constructor(scene, x, y) {
-    super(scene, x, y, 'pnj1');
+  constructor(scene, x, y, imageKey, dialog) {
+    super(scene, x, y, imageKey);
+    this.dialog = dialog;
     this.scene = scene;
-
-    // Add the image to the scene
-    this.image = this.scene.add.image(x, y, 'pnj1');
-
-    this.scene.physics.add.existing(this);
-    this.body.setSize(70, 70);
-    this.body.setOffset(16, 16);
-
-    this.bubble = new Bubble(scene, x, y);
-
+    this.image = this.scene.add.image(x, y, imageKey);
     this.setInteractive();
-    this.on('pointerdown', () => {
-      this.toggleDialog();
-    });
 
+    this.on('pointerdown', () => {
+      console.log('click');
+      console.log(this.dialog);
+      const bubble = new Bubble(scene, x, y, dialog);
+      scene.add.existing(bubble);
+      if (bubble.visible) {
+        bubble.hide();
+      } else {
+        bubble.show();
+      }
+    });
   }
   
-  toggleDialog() {
-    this.bubble.toggle();
-  }
 
   static loadAssets(scene) {
-    scene.load.image('pnj1', pnj1);
     Bubble.loadAssets(scene);
   }
 }
