@@ -41,7 +41,7 @@ export default class MainScene extends Phaser.Scene {
     this.timer = this.time.addEvent({delay: 3000, loop: true});
 
     this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, 'bgDefault');
-    
+
     this.player = new Player(this, 100, 450);
     console.log(this.player);
     // Création du rectangle de fond pour le texte
@@ -61,7 +61,7 @@ export default class MainScene extends Phaser.Scene {
     // centrer le texte par rapport au rectangle
     Phaser.Display.Align.In.Center(textAge, rectAge);
 
-    this.player = new Player(this, 400, 350);
+    //this.player = new Player(this, 400, 350);
     this.pnj = new PNJ(this, 70, 300, 'pnj', "Saviez vous que nous étions près de 4000 habitants, ici même, à Amboise.");
     this.pnj2 = new PNJ(this, 400, 250, 'pnj', "Vous avez remarqué, la vie d'un moine se concentre sur ce qu'il y a de réellement essentiel dans la vie.");
     this.pnj3 = new PNJ(this, 300, 100, 'pnj', "Un petit tour à cheval, cela vous dit ?");
