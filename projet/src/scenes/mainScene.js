@@ -52,7 +52,7 @@ export default class MainScene extends Phaser.Scene {
 
     this.pnjDemo = new PNJ(this, 493, 316, 'pnj', "Bonjour, je suis un PNJ", true, 1, 'door');
 
-    this.player = new Player(this, 100, 450, this.money, this.age);
+    this.player = new Player(this, 100, 375, this.money, this.age);
     console.log(this.player);
     // Création du rectangle de fond pour le texte
     const rectMoney = this.add.rectangle(40, 25,  50, 15, 0xffffff);
