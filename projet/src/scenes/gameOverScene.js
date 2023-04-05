@@ -50,7 +50,7 @@ export default class GameOverScene extends Phaser.Scene {
         // Afficher le bouton "RESTART"
         const restartText = this.add.text(
             this.game.config.width * 0.5,
-            this.game.config.height * 0.7,
+            this.game.config.height * 0.7 - 350,
             'RESTART',
             {
               fontSize: '64px',
@@ -69,7 +69,7 @@ export default class GameOverScene extends Phaser.Scene {
         let gameOverText = '';
 
         //Game over text
-        this.add.text(this.game.config.width*0.5, this.game.config.height*(-0.2), 'GAME OVER', {
+        this.add.text(this.game.config.width*0.5, this.game.config.height*(-0.2) + 220, 'GAME OVER', {
             fontSize: '128px',
             fill: '#FF0000',
         }).setOrigin(0.5, 0.5);
@@ -78,34 +78,34 @@ export default class GameOverScene extends Phaser.Scene {
         if (this.message === 'door') {
             const door = this.add.image(
                 this.game.config.width*0.5,
-                this.game.config.height*0.5,
+                this.game.config.height*0.5 + 20,
               'door'
             );
             door.setScale(0.5).setScrollFactor(0);
 
-            gameOverText += 'Vous êtes mort en traversant une porte!';
+            gameOverText += 'Vous êtes mort en traversant une porte! Vous n\'avez pas eu le temps de devenir noble, et avez peu d\'argent, vous n\'avez laissé aucune trace de vous dans l\'histoire, mis à part votre sang sur la porte...';
           }
 
         //si le message de data contient 'petanque' alors on affiche l'image correspondant
         else if(this.message === 'petanque'){
             const petanque = this.add.image(
                 this.game.config.width*0.5,
-                this.game.config.height*0.5,
+                this.game.config.height*0.5 + 20,
                 'petanque'
                 );
             petanque.setScale(0.5).setScrollFactor(0);
-            gameOverText += 'Vous êtes mort en jouant à la pétanque!';
+            gameOverText += 'Vous êtes mort en jouant à la pétanque! Vous n\'avez pas eu le temps de devenir noble, et avez peu d\'argent, personne ne se souviendra de vous, ni de votre nom... mais au moins vous porterez le nom d\'un lancé de boule!';
         }
 
         //si le message de data contient 'age' alors on affiche l'image correspondant
         else if(this.message === 'age'){
             const age = this.add.image(
                 this.game.config.width*0.5,
-                this.game.config.height*0.5,
+                this.game.config.height*0.5 + 20,
                 'age'
                 );
             age.setScale(0.5).setScrollFactor(0);   
-            gameOverText += 'Vous êtes mort d\'un arrêt cardiaque!';
+            gameOverText += 'Vous êtes mort d\'un arrêt cardiaque! Vous n\'avez pas eu le temps de devenir noble, et avez peu d\'argent, vous n\'avez laissé aucune trace de vous dans l\'histoire, et n\'avez aucune descendance...';
         }
 
         //on affiche l'image du sang
@@ -120,19 +120,20 @@ export default class GameOverScene extends Phaser.Scene {
 
         //on affiche le texte
         this.add
-        .text(this.game.config.width*0.5, this.game.config.height*0.7, gameOverText, {
-            fontSize: '32px',
+        .text(this.game.config.width*0.5, this.game.config.height*0.7 + 150, gameOverText, {
+            fontSize: '24px',
             fill: '#fff',
+            wordWrap: { width: 700, useAdvancedWrap: true }
         })
         .setOrigin(0.5);
 
     }
 
     winGame(){
-        let winGameTewt = 'Vous êtes devenu noble!';
+        let winGameTewt = 'Vous êtes devenu noble ! Votre engagement pour la noblesse vous a permis de d\'assurer la perennité de votre famille, et votre nom apparait dans tout les registres !';
 
         //Winning game text
-        this.add.text(this.game.config.width*0.5, this.game.config.height*(-0.2), 'WIN', {
+        this.add.text(this.game.config.width*0.5, this.game.config.height*(-0.2) + 220, 'WIN', {
             fontSize: '128px',
             fill: '#00CD60',
         }).setOrigin(0.5, 0.5);
@@ -146,18 +147,19 @@ export default class GameOverScene extends Phaser.Scene {
 
         //on affiche le texte
         this.add
-        .text(this.game.config.width*0.5, this.game.config.height*0.7, winGameTewt, {
-            fontSize: '32px',
+        .text(this.game.config.width*0.5, this.game.config.height*0.7 + 150, winGameTewt, {
+            fontSize: '24px',
             fill: '#fff',
+            wordWrap: { width: 700, useAdvancedWrap: true }
         })
         .setOrigin(0.5);
     }
 
     moineGame(){
-        let moineGameText = 'Vous êtes devenu moine!';
+        let moineGameText = 'Vous êtes devenu moine ! Vous avez donc le temps d\'épargné de l\'argent, et de continuer l\'ascension de votre lignée dans les années à venir !';
 
         //Winning game text
-        this.add.text(this.game.config.width*0.5, this.game.config.height*(-0.2), 'MOINE', {
+        this.add.text(this.game.config.width*0.5, this.game.config.height*(-0.2) + 220, 'MOINE', {
             fontSize: '128px',
             fill: '#00B1CD',
         }).setOrigin(0.5, 0.5);
@@ -171,9 +173,10 @@ export default class GameOverScene extends Phaser.Scene {
 
         //on affiche le texte
         this.add
-        .text(this.game.config.width*0.5, this.game.config.height*0.7, moineGameText, {
+        .text(this.game.config.width*0.5, this.game.config.height*0.7 + 150, moineGameText, {
             fontSize: '32px',
             fill: '#fff',
+            wordWrap: { width: 700, useAdvancedWrap: true }
         })
         .setOrigin(0.5);
     
