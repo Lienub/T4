@@ -56,17 +56,7 @@ export default class Pnj extends Phaser.Physics.Arcade.Sprite {
      else{
       this.keyImage.setVisible(false);
      }
-   }
- 
-   static loadAssets(scene, type) {
-     switch (type) {
-       case 'pnj1':  
-         scene.load.image('pnj', pnj1);
-         break;
-       default:
-         scene.load.image('pnj', pnj1);
-     }
-   }
+    }
 
 }
 
