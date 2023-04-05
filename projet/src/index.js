@@ -12,8 +12,8 @@ import MainScene from './scenes/mainScene';
 // The game will use the MainScene scene
 const config = {
     type: Phaser.AUTO,
-    width: window.innerWidth,
-    height: window.innerHeight - 5,
+    width: 960,
+    height: 720,
     physics: {
         default: 'arcade',
         arcade: {
