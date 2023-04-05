@@ -4,6 +4,9 @@
 import Phaser from 'phaser';
 import MenuScene from './scenes/menuScene';
 import MainScene from './scenes/mainScene';
+import GameOverScene from './scenes/gameOverScene';
+import SecondGameScene from './scenes/SecondGameScene';
+import ThirdGameScene from './scenes/ThirdGameScene';
 
 // Creating the game
 // The game will be 960x720 pixels
@@ -12,8 +15,8 @@ import MainScene from './scenes/mainScene';
 // The game will use the MainScene scene
 const config = {
     type: Phaser.AUTO,
-    width: window.innerWidth,
-    height: window.innerHeight - 5,
+    width: 960,
+    height: 720,
     physics: {
         default: 'arcade',
         arcade: {
@@ -21,7 +24,7 @@ const config = {
             gravity: {y : 0},
         }
     },
-    scene: [MenuScene, MainScene]
+    scene: [MenuScene, MainScene, GameOverScene, SecondGameScene, ThirdGameScene]
 
 };
 
