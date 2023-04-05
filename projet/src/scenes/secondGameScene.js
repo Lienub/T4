@@ -52,7 +52,7 @@ background.setScale(
 );
 
 // Creating the player (cf model/player.js)
-this.player = new Player(this, 100, 450, this.money, this.age);
+this.player = new Player(this, 100, 450, this.money, this.age,this.noble);
 console.log(this.player);
 
 // Création du rectangle de fond pour le texte
@@ -77,7 +77,7 @@ console.log('After create 2ème scène');
 
 this.pnj1 = new PNJ(this,860,500,'pnj',"Il se déroule, demain, un séminaire d'apprentissage de la vie spirituel des moines. Souhaitez vous vous y rendre ?",true,2,);
 this.pnj2 = new PNJ(this,130,250,'pnj',"Oh, l'ami, ça fait longtemps, voulez-vous passer boire le thé chez moi ?",true, 1, 'door');
-this.pnj3 = new PNJ(this,580,235,'pnj',"Lors du marché de demain, de nombreuses familles de noble des terres voisines arriveront, si j'étais vous, je préparerais mes meilleurs création afin de leur vendre. Se préparer pour le marché ?",true,5);
+this.pnj3 = new PNJ(this,580,235,'pnj',"Lors du marché de demain, de nombreuses familles de noble des terres voisines arriveront, si j'étais vous, je préparerais mes meilleurs création afin de leur vendre. Se préparer pour le marché ?",true,5,'',this.player);
 this.pnj4 = new PNJ(this,880,300,'pnj',"On dit que le fils du roi n'est guère intéressé par sa succession", false);
 this.pnj5 = new PNJ(this,350,400,'pnj',"Un petit tour de cheval, cela vous dit ?",true,4,'', this.player);
 
