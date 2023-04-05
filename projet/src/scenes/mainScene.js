@@ -6,6 +6,7 @@ import Player from '../model/player';
 import HitBox from '../assets/utils/hitBox';
 
 
+
 // Creating a scene named MainScene,
 // which will be the main scene of the game
 // This scene will contains the player,
@@ -35,6 +36,15 @@ export default class MainScene extends Phaser.Scene {
     this.hitBox2 = new HitBox(this, 467 + (465/2), 2 + (285/2), 495, 285, 0x000000, 0);
     this.hitBox3 = new HitBox(this, 262 + (206/2), 0 + (18/2), 206, 18, 0x000000, 0);
     this.hitBox4 = new HitBox(this, 3 + (959/2), 420 + (280/2), 959, 280, 0x000000, 0);
+    
+    // Création du bouton
+    const button = this.add.text(400, 50, 'Game Over', { fill: '#0f0' }).setOrigin(0.5);
+    button.setInteractive({ useHandCursor: true });
+    
+    // Action lors du clic sur le bouton
+    button.on('pointerdown', () => {
+      this.scene.start('GameOverScene', { win: 'monk', message: 'door' });
+    });
 
   }
     
