@@ -21,6 +21,7 @@ export default class ThirdGameScene extends Phaser.Scene {
     console.log(data.money, data.age);
     this.money = data.money;
     this.age = data.age;
+    this.noble = data.noble;
   }
 
   create() {
@@ -103,6 +104,14 @@ export default class ThirdGameScene extends Phaser.Scene {
         this.noble = false;
       }
     }
+}
+
+incrementAge() {
+  this.age += 1;
+  console.log("Age : " + this.age);
+  this.textAge.setText(this.age);
+  this.player.setAge(this.age);
+}
     
 
     // Updating the scene
@@ -110,6 +119,12 @@ export default class ThirdGameScene extends Phaser.Scene {
     // based on the keyboard inputs,
     // we call the player.move() function (cf model/player.js)
   update() {
+    this.money = this.player.getMoney();
+    console.log(this.player.getAge());
+    if (this.player.getAge() > 62){
+      this.scene.start('GameOverScene', { win: 'false', message: 'age' });
+    }
+
     const cursors = this.input.keyboard.createCursorKeys();
     if(cursors.left.isDown) {
       this.player.move('left');

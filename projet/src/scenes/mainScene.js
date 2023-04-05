@@ -54,7 +54,7 @@ export default class MainScene extends Phaser.Scene {
 
     //this.pnjDemo = new PNJ(this, 493, 316, 'pnj', "Bonjour, je suis un PNJ", true, 1, 'door');
 
-    this.player = new Player(this, 100, 450, this.money, this.age,this.noble);
+    this.player = new Player(this, 100, 400, this.money, this.age,false);
     //console.log(this.player);
     // Création du rectangle de fond pour le texte
     this.rectMoney = this.add.rectangle(40, 25,  50, 15, 0xffffff);
@@ -89,7 +89,7 @@ export default class MainScene extends Phaser.Scene {
 
     // Créer une minuterie qui appelle la fonction incrementAge toutes les 2 secondes
     this.time.addEvent({
-      delay: 2000, // 2 secondes
+      delay: 2500, // 2,5 secondes
       callback: this.incrementAge,
       callbackScope: this,
       loop: true // répéter indéfiniment
