@@ -20,7 +20,7 @@ export default class MainScene extends Phaser.Scene {
   // here, we preload the background image
   preload() {
     this.load.image('bgDefault', bgDefault);
-  
+    
     Player.loadAssets(this);
   }
 
@@ -28,8 +28,39 @@ export default class MainScene extends Phaser.Scene {
   // here, we create the background image
   // and the player (cf model/player.js)
   create() {
+    //Style des textes dans les rectangles
+      const style = {
+      fontFamily: 'Arial',
+      fontSize: '24',
+      color: '#000000',
+      align: 'center',
+    }
+
+    // décalage du texte pour chaque rectangle
+    const textOffset = 20;
+
+    // Création du timer de 3 secondes
+    this.timer = this.time.addEvent({delay: 3000, loop: true});
+
     this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, 'bgDefault');
     this.player = new Player(this, 100, 450);
+    console.log(this.player);
+    // Création du rectangle de fond pour le texte
+    const rectMoney = this.add.rectangle(40, 25,  50, 15, 0xffffff);
+    // Création du texte
+    this.money = this.player.getMoney();
+    const textMoney = this.add.text(rectMoney.x, rectMoney.y - textOffset, this.money, style);
+    // centrer le texte par rapport au rectangle
+    Phaser.Display.Align.In.Center(textMoney, rectMoney);
+
+
+    // Création du rectangle de fond pour le texte
+    const rectAge = this.add.rectangle(100, 25,  50, 15, 0xffffff);
+    // Création du texte
+    this.age = this.player.getAge();
+    const textAge = this.add.text(rectAge.x, rectAge.y - textOffset, this.age, style);
+    // centrer le texte par rapport au rectangle
+    Phaser.Display.Align.In.Center(textAge, rectAge);
 
     //Creating the hitboxes
     this.hitBox = new HitBox(this, 132, 142, 264, 284, 0x000000, 0);
@@ -52,9 +83,7 @@ export default class MainScene extends Phaser.Scene {
     
     // Action lors du clic sur le bouton
     nextScene_button.on('pointerdown', () => {
-      this.scene.start('SecondGameScene');
-    });
-
+      this.scene.start('SecondGameScene', {player : this.player});});
   }
     
 
@@ -62,7 +91,18 @@ export default class MainScene extends Phaser.Scene {
   // here, we update the player movements
   // based on the keyboard inputs,
   // we call the player.move() function (cf model/player.js)
-  update() {
+  update(time,delta) {
+    this.money = this.player.getMoney();
+
+    // Si le time est à 3
+    if (this.timer.getProgress() === 3) {
+      // On reset le timer
+      this.timer.reset();
+      this.age = this.age+1;
+      // On ajoute 1 à l'âge du joueur
+    }
+
+
     const cursors = this.input.keyboard.createCursorKeys();
     if(cursors.left.isDown) {
       this.player.move('left');
