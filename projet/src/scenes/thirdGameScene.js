@@ -5,16 +5,22 @@ import Player from '../model/player';
 
 export default class ThirdGameScene extends Phaser.Scene {
 
-    constructor(player) {
+    constructor() {
         super({ key: 'ThirdGameScene' });
-        this.player = player;
-    }
+      }
 
     preload() {
         this.load.image('bgscene', bc);
         Player.loadAssets(this);
 
 
+    }
+
+    init(data) {
+      console.log('ThirdGameScene constructor');
+      console.log(data.money, data.age);
+      this.money = data.money;
+      this.age = data.age;
     }
 
     create() {
@@ -35,7 +41,7 @@ const textOffset = 20;
 this.timer = this.time.addEvent({delay: 3000, loop: true});
 
 this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, 'bgDefault');
-this.player = new Player(this, 100, 450);
+this.player = new Player(this, 100, 450, this.money, this.age);
 console.log(this.player);
 // Création du rectangle de fond pour le texte
 const rectMoney = this.add.rectangle(40, 25,  50, 15, 0xffffff);
