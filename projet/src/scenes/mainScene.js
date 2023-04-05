@@ -38,6 +38,15 @@ export default class MainScene extends Phaser.Scene {
       this.scene.start('GameOverScene', { message: 'petanque' });
     });
 
+
+    const nextScene_button = this.add.text(200, 50, 'Next Scene', { fill: '#0f0' }).setOrigin(0.5);
+    nextScene_button.setInteractive({ useHandCursor: true });
+    
+    // Action lors du clic sur le bouton
+    nextScene_button.on('pointerdown', () => {
+      this.scene.start('SecondGameScene');
+    });
+
   }
 
   // Updating the scene
