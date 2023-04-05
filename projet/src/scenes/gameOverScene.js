@@ -1,9 +1,9 @@
 import Phaser from 'phaser';
 import bloodImg from '../assets/img/blood.png';
-import porteImg from '../assets/img/door.png';
+import doorImg from '../assets/img/door.png';
 import petanqueImg from '../assets/img/petanque.png';
 import winImg from '../assets/img/crown.png';
-import moineImg from '../assets/img/moine.png';
+import monkImg from '../assets/img/monk.png';
 
 export default class GameOverScene extends Phaser.Scene {
     constructor() {
@@ -20,7 +20,7 @@ export default class GameOverScene extends Phaser.Scene {
     preload() {
         //si le message de data contient 'porte' alors on affiche l'image de la porte
         if (this.message == 'door') {
-            this.load.image('door', porteImg);
+            this.load.image('door', doorImg);
         }
         //si le message de data contient 'petanque' alors on affiche l'image correspondant
         else if(this.message == 'petanque'){
@@ -30,14 +30,14 @@ export default class GameOverScene extends Phaser.Scene {
         //si le message de win de data contient 'win' alors on affiche l'image de la couronne
         this.load.image('win', winImg);
         this.load.image('blood', bloodImg);
-        this.load.image('moine', moineImg);
+        this.load.image('monk', monkImg);
     }
 
     create() {
         console.log(this.win);
         if(this.win === 'win')
             this.winGame();
-        else if (this.win === 'moine')
+        else if (this.win === 'monk')
             this.moineGame();
         else 
             this.gameOver();
@@ -145,7 +145,7 @@ export default class GameOverScene extends Phaser.Scene {
         let moineGameText = 'Vous êtes devenu moine!';
 
         //Winning game text
-        this.add.text(this.cameras.main.centerX-10, -50, 'MOINE', {
+        this.add.text(this.cameras.main.centerX-10, -80, 'MOINE', {
             fontSize: '128px',
             fill: '#00B1CD',
         }).setOrigin(0.5, 0.5);
@@ -154,7 +154,7 @@ export default class GameOverScene extends Phaser.Scene {
         const crown = this.add.image(
         this.cameras.main.centerX,
         this.cameras.main.centerY,
-        'win'
+        'monk'
         );
 
         //on affiche le texte
