@@ -2,9 +2,9 @@ import Phaser from 'phaser';
 import bgDefault from '../assets/img/bg_default.png';
 import Player from '../model/player';
 import PNJ from '../model/pnj';
-//import Bubble from '../model/bubble';
-import pnjImg from '../assets/img/pnj.png';
 import HitBox from '../assets/utils/hitBox';
+import box from '../assets/img/msgBox.png';
+import key from '../assets/img/e-key.png';
 
 
 
@@ -16,19 +16,19 @@ export default class MainScene extends Phaser.Scene {
   constructor() {
     super({ key: 'MainScene' });
   }
-
   preload() {
     this.load.image('bgDefault', bgDefault);
+    this.load.image('dialog-box', box)
+    this.load.image('key', key)
   
     Player.loadAssets(this);
-    this.load.image('pnj', pnjImg);
-    PNJ.loadAssets(this);
+    PNJ.loadAssets(this, "pnj1");
   }
 
   create() {
     this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, 'bgDefault');
-    this.player = new Player(this, 100, 450);
-    this.pnj = new PNJ(this, 200, 650, 'pnj', "Bonjour, je suis un PNJ");
+    this.player = new Player(this, 127, 364);
+    this.pnj = new PNJ(this, 493, 316, 'pnj', "Bonjour, je suis un PNJ", true, 1, 'door');
 
     //Creating the hitboxes
     this.hitBox = new HitBox(this, 132, 142, 264, 284, 0x000000, 0);
@@ -48,11 +48,6 @@ export default class MainScene extends Phaser.Scene {
 
     const nextScene_button = this.add.text(200, 50, 'Next Scene', { fill: '#0f0' }).setOrigin(0.5);
     nextScene_button.setInteractive({ useHandCursor: true });
-    
-    // Action lors du clic sur le bouton
-    nextScene_button.on('pointerdown', () => {
-      this.scene.start('SecondGameScene');
-    });
 
   }
     
@@ -75,10 +70,6 @@ export default class MainScene extends Phaser.Scene {
       this.player.stop();
     }
 
-    //on click on the screen, print the coordinates of the click
-    this.input.on('pointerdown', function (pointer) {
-      console.log(pointer.x, pointer.y);
-    });
   }
   
 }
