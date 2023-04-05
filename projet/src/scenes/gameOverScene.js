@@ -65,7 +65,7 @@ export default class GameOverScene extends Phaser.Scene {
         let gameOverText = '';
 
         //Game over text
-        this.add.text(this.cameras.main.centerX-10, -50, 'GAME OVER', {
+        this.add.text(this.cameras.main.centerX-10, 0, 'GAME OVER', {
             fontSize: '128px',
             fill: '#FF0000',
         }).setOrigin(0.5, 0.5);
@@ -120,7 +120,7 @@ export default class GameOverScene extends Phaser.Scene {
         let winGameTewt = 'Vous êtes devenu nôble!';
 
         //Winning game text
-        this.add.text(this.cameras.main.centerX-10, -50, 'WIN', {
+        this.add.text(this.cameras.main.centerX-10, 0, 'WIN', {
             fontSize: '128px',
             fill: '#00CD60',
         }).setOrigin(0.5, 0.5);
@@ -145,7 +145,7 @@ export default class GameOverScene extends Phaser.Scene {
         let moineGameText = 'Vous êtes devenu moine!';
 
         //Winning game text
-        this.add.text(this.cameras.main.centerX-10, -80, 'MOINE', {
+        this.add.text(this.cameras.main.centerX-10, 0, 'MOINE', {
             fontSize: '128px',
             fill: '#00B1CD',
         }).setOrigin(0.5, 0.5);
