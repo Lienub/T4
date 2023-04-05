@@ -5,6 +5,7 @@ import bgDefault from '../assets/img/bg_default.png';
 import Player from '../model/player';
 
 
+
 // Creating a scene named MainScene,
 // which will be the main scene of the game
 // This scene will contains the player,
@@ -27,6 +28,16 @@ export default class MainScene extends Phaser.Scene {
   create() {
     this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, 'bgDefault');
     this.player = new Player(this, 100, 450);
+
+      // Création du bouton
+    const button = this.add.text(400, 50, 'Game Over', { fill: '#0f0' }).setOrigin(0.5);
+    button.setInteractive({ useHandCursor: true });
+    
+    // Action lors du clic sur le bouton
+    button.on('pointerdown', () => {
+      this.scene.start('GameOverScene', { message: 'petanque' });
+    });
+
   }
 
   // Updating the scene

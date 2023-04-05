@@ -4,6 +4,7 @@
 import Phaser from 'phaser';
 import MenuScene from './scenes/menuScene';
 import MainScene from './scenes/mainScene';
+import GameOverScene from './scenes/gameOverScene';
 
 // Creating the game
 // The game will be 960x720 pixels
@@ -21,7 +22,7 @@ const config = {
             gravity: {y : 0},
         }
     },
-    scene: [MenuScene, MainScene]
+    scene: [MenuScene, MainScene, GameOverScene]
 
 };
 
