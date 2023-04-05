@@ -26,8 +26,6 @@ export default class Pnj extends Phaser.Physics.Arcade.Sprite {
     this.scene.events.on('update', this.update, this);
 
     this.setInteractive();
-    this.onDialog = false;
-
     this.keyImage = this.scene.add.image(this.x, this.y - 50, 'key').setOrigin(0.5, 0.5).setVisible(false);
 
   }
@@ -48,13 +46,12 @@ export default class Pnj extends Phaser.Physics.Arcade.Sprite {
       //display key image
       this.keyImage.setVisible(true);
        // Check if the player presses Enter
-       if (this.scene.input.keyboard.checkDown(this.scene.input.keyboard.addKey('E'), 250) && !this.onDialog) {
-        this.onDialog = true;  
+       if (this.scene.input.keyboard.checkDown(this.scene.input.keyboard.addKey('E'), 250) && !this.scene.onDialog) {
         // Show the dialog
-          this.dialog = new Dialog(this.scene, this, this.dialogText, this.choice, this.w_type, this.d_type,this.player);
+          this.dialog = new Dialog(this.scene, this, this.dialogText, this.choice, this.w_type, this.d_type,this.player);;
           this.scene.player.immovable = true;
+          this.scene.onDialog = true;  
         } 
-        this.onDialog = false;
      }
      else{
       this.keyImage.setVisible(false);
