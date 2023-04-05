@@ -7,6 +7,7 @@ export default class Parchment extends Phaser.Physics.Arcade.Sprite {
         super(scene, x, y);
         this.scene = scene;
         this.image = this.scene.add.image(x, y, 'parchemin');
+
         this.image.setScale(0.5);
         this.image.setOrigin(0.5);
         this.image.setDepth(1);
@@ -15,14 +16,16 @@ export default class Parchment extends Phaser.Physics.Arcade.Sprite {
             txt = "Grâce à cette offre vous gagnez 100 écus!";
         }
         else if (txt == "pain"){
-            txt = "Vous avez accepter d'entreprendre l'ouverture d'une boulangerie pour tout votre argent!";
+            txt = "Vous avez accepté d'entreprendre l'ouverture d'une boulangerie pour tout votre argent!";
         }
+
+
 
         this.text = this.scene.add.text(x+10, y-20, txt, {
             fontSize: '16px',
             fill: '#000000',
             wordWrap: {
-                width: this.image.width * 0.6,
+                width: 180,
                 useAdvancedWrap: true
             },
             align: 'center',
@@ -30,6 +33,10 @@ export default class Parchment extends Phaser.Physics.Arcade.Sprite {
         this.text.setOrigin(0.5);
         this.text.setDepth(2);
         this.visible = false;
+
+        this.scene.input.keyboard.on('keydown-ENTER', () => {
+            this.destroy();
+      });
     }
 
         // Méthode pour afficher le parchemin
@@ -48,5 +55,10 @@ export default class Parchment extends Phaser.Physics.Arcade.Sprite {
 
     static loadAssets(scene) {
         scene.load.image('parchemin', parchemin);
+    }
+
+    destroy() {
+        this.image.destroy();
+        this.text.destroy();
     }
 }
