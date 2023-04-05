@@ -40,19 +40,19 @@ export default class SecondGameScene extends Phaser.Scene {
   // Création du timer de 3 secondes
   this.timer = this.time.addEvent({delay: 3000, loop: true});
 
-  var background = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, 'bg');
-  background.setOrigin(0, 0);
-    background.setScale(
-        this.game.config.width / background.width,
-        this.game.config.height / background.height
-    );
+  this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, 'bg');
+  //background.setOrigin(0, 0);
+//    background.setScale(
+  //      this.game.config.width / background.width,
+    //    this.game.config.height / background.height
+    
   this.player = new Player(this, 100, 450, this.money, this.age);
   console.log(this.player);
   // Création du rectangle de fond pour le texte
   const rectMoney = this.add.rectangle(40, 25,  50, 15, 0xffffff);
   // Création du texte
-  const money = this.player.getMoney();
-  const textMoney = this.add.text(rectMoney.x, rectMoney.y - textOffset, money, style);
+  this.money = this.player.getMoney();
+  const textMoney = this.add.text(rectMoney.x, rectMoney.y - textOffset, this.money, style);
   // centrer le texte par rapport au rectangle
   Phaser.Display.Align.In.Center(textMoney, rectMoney);
 
@@ -60,8 +60,8 @@ export default class SecondGameScene extends Phaser.Scene {
   // Création du rectangle de fond pour le texte
   const rectAge = this.add.rectangle(100, 25,  50, 15, 0xffffff);
   // Création du texte
-  const age = this.player.getAge();
-  const textAge = this.add.text(rectAge.x, rectAge.y - textOffset, age, style);
+  this.age = this.player.getAge();
+  const textAge = this.add.text(rectAge.x, rectAge.y - textOffset, this.age, style);
   // centrer le texte par rapport au rectangle
   Phaser.Display.Align.In.Center(textAge, rectAge);
 
