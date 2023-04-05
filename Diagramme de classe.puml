@@ -1,9 +1,31 @@
 @startuml
 
 class Pnj extends Phaser.Physics.Arcade.Sprite{
+    - dialogText : String
+    - scene : Phaser.Scene
+    - choice : Boolean
+    - w_type : int
+    - d_type : String
+    - player : Player
+
+    + Pnj(scene: Phaser.Scene, x : int, y : int, texture : string, dialog : string, choice : Boolean, w_type : int, d_type : String, player : Player)
+    + (static) loadAssets(scene: Phaser.Scene, type : String) : void
+    + update() : void
 }
 
 class Bubble extends Phaser.Physics.Arcade.Sprite {
+    - scene : Phaser.Scene
+    - pnj : Pnj
+    - isChoice : Boolean
+    - scenario : int
+    - death : String
+    - player : Player
+
+    + Bubble(scene: Phaser.Scene, pnj : Pnj, text : String, isChoice : Boolean, scenario : int, death : String, player : Player)
+    + selectOption(option) : void
+    + destroy() : void
+
+
 
 }
 class Player extends Phaser.Physics.Arcade.Sprite {
@@ -63,7 +85,7 @@ SecondGameScene -> HitBox
 ThirdGameScene -> Player
 ThirdGameScene -> Pnj
 ThirdGameScene -> HitBox
-Pnj -> Bubble : creates
+Pnj -> Bubble : instanciate
 
 
 @enduml
