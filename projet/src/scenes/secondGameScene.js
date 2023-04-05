@@ -4,10 +4,18 @@ import Player from '../model/player';
 
 export default class SecondGameScene extends Phaser.Scene {
 
-    constructor(player) {
+    constructor() {
         super({ key: 'SecondGameScene' });
-        this.player = player;
     }
+
+    init(data) {
+      console.log('SecondGameScene constructor');
+      console.log('SecondGameScene constructor 2');
+      console.log(data.money, data.age);
+      this.money = data.money;
+      this.age = data.age;
+    }
+
 
     preload() {
         this.load.image('bg', bc);
@@ -32,8 +40,13 @@ export default class SecondGameScene extends Phaser.Scene {
   // Création du timer de 3 secondes
   this.timer = this.time.addEvent({delay: 3000, loop: true});
 
-  this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, 'bgDefault');
-  this.player = new Player(this, 100, 450);
+  var background = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, 'bg');
+  background.setOrigin(0, 0);
+    background.setScale(
+        this.game.config.width / background.width,
+        this.game.config.height / background.height
+    );
+  this.player = new Player(this, 100, 450, this.money, this.age);
   console.log(this.player);
   // Création du rectangle de fond pour le texte
   const rectMoney = this.add.rectangle(40, 25,  50, 15, 0xffffff);
@@ -55,8 +68,8 @@ export default class SecondGameScene extends Phaser.Scene {
 
   // here, we create the background image
   // and the player (cf model/player.js)
-    this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, 'bg');
-    this.player = new Player(this, 100, 450);
+  var background = this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, 'bg');
+  
 
 
     const nextScene_button = this.add.text(200, 50, 'Next Scene', { fill: '#0f0' }).setOrigin(0.5);
@@ -65,7 +78,7 @@ export default class SecondGameScene extends Phaser.Scene {
     
     // Action lors du clic sur le bouton
     nextScene_button.on('pointerdown', () => {
-      this.scene.start('ThirdGameScene', {player: this.player});
+      this.scene.start('ThirdGameScene', {money : this.player.money, age : this.player.age});
     });
     }
 
