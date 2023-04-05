@@ -1,0 +1,3 @@
+node_modules
+projet/dist/main.js
+projet/.webpack-cache
