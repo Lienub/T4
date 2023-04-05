@@ -1,3 +1,5 @@
+import Parchment from "../../model/parchment";
+
 export default class Dialog {
   constructor(scene, pnj, text, isChoice, scenario, death,player) {
     // Store reference to scene and PNJ
@@ -82,8 +84,14 @@ export default class Dialog {
     else{
       if(this.scenario == 0){
         console.log("type 0")
-        //start gameover scene
-        this.scene.scene.start('GameOverScene', { win: 'win', message: 'door' });
+        //start gameover scene si le joueur est éligible à devenir noble
+        if(this.player.noble == true){
+          this.scene.scene.start('GameOverScene', { win: 'win' });
+        }
+        //sinon il meurt de vieillesse
+        else{
+          this.scene.scene.start('GameOverScene', { win: 'loose', message: 'age' });
+        }
       }
       else if(this.scenario == 1){
         console.log("type 1")
@@ -97,7 +105,42 @@ export default class Dialog {
         console.log("type 4")
         console.log(this.player);
         console.log("44");
-        this.scene.scene.start('SecondGameScene', {money : this.player.money, age : this.player.age});
+        //si la scène est la scène 1, on passe à la scène 2
+        if(this.scene.scene.key == "FirstGameScene"){
+          this.scene.scene.start('SecondGameScene', {money : this.player.money, age : this.player.age});
+        }
+        //si la scène est la scène 2, on passe à la scène 3
+        if(this.scene.scene.key == "SecondGameScene"){
+          this.scene.scene.start('ThirdGameScene', {money : this.player.money, age : this.player.age});
+        }
+      }
+      else if(this.scenario == 5){
+        console.log("type 5")
+        this.destroy();
+        //L'argent est ajouté au joueur
+        this.player.money += 100;
+        //Le joueur devient éligible à devenir noble
+        this.player.noble = true;
+        //Un objet Parchemin avec le texte adéquat est affiché
+        this.parchemin = new Parchment(this.scene, 480, 360, "parchemin", "noble", this.player);
+        //se ferme au click
+        this.parchemin.setInteractive();
+        this.parchemin.on('pointerup', () => {
+          this.parchemin.destroy();
+        }, this);
+      }
+      else if(this.scenario == 6){
+        console.log("type 6")
+        this.destroy();
+        //L'argent est ajouté au joueur
+        this.player.money = 0;
+        //Un objet Parchemin avec le texte adéquat est affiché 
+        this.parchemin = new Parchment(this.scene, 480, 360, "parchemin", "poor", this.player);
+        //se ferme au click
+        this.parchemin.setInteractive();
+        this.parchemin.on('pointerup', () => {
+          this.parchemin.destroy();
+        }, this);
       }
   }
 } 

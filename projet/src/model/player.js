@@ -21,6 +21,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     this.scene = scene;
     this.money = money;
     this.age = age;
+    this.noble = false;
 
 
     this.scene.add.existing(this);
