@@ -1,7 +1,9 @@
 import Phaser from 'phaser';
 import bloodImg from '../assets/img/blood.png';
-import porteImg from '../assets/img/door.png';
+import doorImg from '../assets/img/door.png';
 import petanqueImg from '../assets/img/petanque.png';
+import winImg from '../assets/img/crown.png';
+import monkImg from '../assets/img/monk.png';
 
 export default class GameOverScene extends Phaser.Scene {
     constructor() {
@@ -11,21 +13,55 @@ export default class GameOverScene extends Phaser.Scene {
     
 
     init(data) {
+        this.win = data.win;
         this.message = data.message;
     }
 
     preload() {
         //si le message de data contient 'porte' alors on affiche l'image de la porte
         if (this.message == 'door') {
-            this.load.image('door', porteImg);
+            this.load.image('door', doorImg);
         }
+        //si le message de data contient 'petanque' alors on affiche l'image correspondant
         else if(this.message == 'petanque'){
             this.load.image('petanque', petanqueImg);
         }
+
+        //si le message de win de data contient 'win' alors on affiche l'image de la couronne
+        this.load.image('win', winImg);
         this.load.image('blood', bloodImg);
+        this.load.image('monk', monkImg);
     }
 
     create() {
+        console.log(this.win);
+        if(this.win === 'win')
+            this.winGame();
+        else if (this.win === 'monk')
+            this.moineGame();
+        else 
+            this.gameOver();
+        
+
+        // Afficher le bouton "RESTART"
+        const restartText = this.add.text(
+            this.cameras.main.centerX,
+            this.cameras.main.height - 200,
+            'RESTART',
+            {
+              fontSize: '64px',
+              fill: '#EEDF12',
+            }
+          )
+          .setOrigin(0.5)
+          .setInteractive()
+          .on('pointerover', () => restartText.setScale(1.2))
+          .on('pointerout', () => restartText.setScale(1))
+          .on('pointerdown', () => location.reload());
+
+    }
+
+    gameOver(){
         let gameOverText = '';
 
         //Game over text
@@ -78,24 +114,56 @@ export default class GameOverScene extends Phaser.Scene {
         })
         .setOrigin(0.5);
 
+    }
 
-        
-        // Afficher le bouton "RESTART"
-        const restartText = this.add.text(
-            this.cameras.main.centerX,
-            this.cameras.main.height - 200,
-            'RESTART',
-            {
-              fontSize: '64px',
-              fill: '#EEDF12',
-            }
-          )
-          .setOrigin(0.5)
-          .setInteractive()
-          .on('pointerover', () => restartText.setScale(1.2))
-          .on('pointerout', () => restartText.setScale(1))
-          .on('pointerdown', () => location.reload());
+    winGame(){
+        let winGameTewt = 'Vous êtes devenu nôble!';
 
+        //Winning game text
+        this.add.text(this.cameras.main.centerX-10, -50, 'WIN', {
+            fontSize: '128px',
+            fill: '#00CD60',
+        }).setOrigin(0.5, 0.5);
 
+        //on affiche l'image de la couronne
+        const crown = this.add.image(
+        this.cameras.main.centerX,
+        this.cameras.main.centerY,
+        'win'
+        );
+
+        //on affiche le texte
+        this.add
+        .text(this.cameras.main.centerX, this.cameras.main.centerY + 150, winGameTewt, {
+            fontSize: '32px',
+            fill: '#fff',
+        })
+        .setOrigin(0.5);
+    }
+
+    moineGame(){
+        let moineGameText = 'Vous êtes devenu moine!';
+
+        //Winning game text
+        this.add.text(this.cameras.main.centerX-10, -80, 'MOINE', {
+            fontSize: '128px',
+            fill: '#00B1CD',
+        }).setOrigin(0.5, 0.5);
+
+        //on affiche l'image de la couronne
+        const crown = this.add.image(
+        this.cameras.main.centerX,
+        this.cameras.main.centerY,
+        'monk'
+        );
+
+        //on affiche le texte
+        this.add
+        .text(this.cameras.main.centerX, this.cameras.main.centerY + 150, moineGameText, {
+            fontSize: '32px',
+            fill: '#fff',
+        })
+        .setOrigin(0.5);
+    
     }
 }
