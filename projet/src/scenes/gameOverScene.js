@@ -69,11 +69,7 @@ export default class GameOverScene extends Phaser.Scene {
         let gameOverText = '';
 
         //Game over text
-<<<<<<< HEAD
-        this.add.text(this.cameras.main.centerX-10, 0, 'GAME OVER', {
-=======
         this.add.text(this.game.config.width*0.5, this.game.config.height*(-0.2), 'GAME OVER', {
->>>>>>> 23232a24a77ed6eb122e462c04a0bc065c78603c
             fontSize: '128px',
             fill: '#FF0000',
         }).setOrigin(0.5, 0.5);
