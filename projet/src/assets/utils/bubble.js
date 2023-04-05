@@ -19,7 +19,7 @@ export default class Dialog {
     Dialog.isOpen = false;
 
     // Create dialog text
-    this.dialogText = this.scene.add.text(this.dialogBox.x, this.dialogBox.y, text, {
+    this.dialogText = this.scene.add.text(this.dialogBox.x - 350, this.dialogBox.y - 15, text, {
       fontFamily: 'Arial',
       fontSize: '18px',
       color: '#000000',
@@ -32,7 +32,7 @@ export default class Dialog {
 
     if (this.isChoice) {
       // Create choice options
-      this.option1 = this.scene.add.text(this.dialogBox.x, this.dialogBox.y + 20, 'Oui', {
+      this.option1 = this.scene.add.text(this.dialogBox.x + 150, this.dialogBox.y - 20, 'Oui', {
         fontFamily: 'Arial',
         fontSize: '18px',
         color: '#000000',
@@ -44,7 +44,7 @@ export default class Dialog {
         this.selectOption(1);
       });
 
-      this.option2 = this.scene.add.text(this.dialogBox.x, this.dialogBox.y + 50, 'Non', {
+      this.option2 = this.scene.add.text(this.dialogBox.x + 150, this.dialogBox.y + 20, 'Non', {
         fontFamily: 'Arial',
         fontSize: '18px',
         color: '#000000',
@@ -105,6 +105,7 @@ export default class Dialog {
   destroy() {
 
     Dialog.isOpen = false;
+    this.scene.onDialog = false;
     // Destroy all dialog elements
     this.dialogBox.destroy();
     this.dialogText.destroy();
