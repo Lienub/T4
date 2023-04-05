@@ -1,8 +1,9 @@
 import Phaser from 'phaser';
-// Importing all the necessary resources
-
 import bgDefault from '../assets/img/bg_default.png';
 import Player from '../model/player';
+import PNJ from '../model/pnj';
+//import Bubble from '../model/bubble';
+import pnjImg from '../assets/img/pnj.png';
 import HitBox from '../assets/utils/hitBox';
 
 
@@ -16,20 +17,18 @@ export default class MainScene extends Phaser.Scene {
     super({ key: 'MainScene' });
   }
 
-  // Preloading all the necessary resources
-  // here, we preload the background image
   preload() {
     this.load.image('bgDefault', bgDefault);
   
     Player.loadAssets(this);
+    this.load.image('pnj', pnjImg);
+    PNJ.loadAssets(this);
   }
 
-  // Creating the scene
-  // here, we create the background image
-  // and the player (cf model/player.js)
   create() {
     this.add.image(this.cameras.main.centerX, this.cameras.main.centerY, 'bgDefault');
     this.player = new Player(this, 100, 450);
+    this.pnj = new PNJ(this, 200, 650, 'pnj', "Bonjour, je suis un PNJ");
 
     //Creating the hitboxes
     this.hitBox = new HitBox(this, 132, 142, 264, 284, 0x000000, 0);
@@ -58,10 +57,6 @@ export default class MainScene extends Phaser.Scene {
   }
     
 
-  // Updating the scene
-  // here, we update the player movements
-  // based on the keyboard inputs,
-  // we call the player.move() function (cf model/player.js)
   update() {
     const cursors = this.input.keyboard.createCursorKeys();
     if(cursors.left.isDown) {
@@ -85,4 +80,5 @@ export default class MainScene extends Phaser.Scene {
       console.log(pointer.x, pointer.y);
     });
   }
+  
 }
