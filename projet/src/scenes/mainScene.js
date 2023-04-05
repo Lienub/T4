@@ -44,6 +44,8 @@ export default class MainScene extends Phaser.Scene {
     // money 
     this.money = 0;
 
+    this.onDialog = false;
+
 
     // Création du timer de 3 secondes
     this.timer = this.time.addEvent({delay: 2000, loop: true});
@@ -158,7 +160,6 @@ export default class MainScene extends Phaser.Scene {
     else {
       this.player.stop();
     }
-
   }
   
 }
