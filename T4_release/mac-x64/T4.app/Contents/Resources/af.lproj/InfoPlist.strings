@@ -1,0 +1,7 @@
+CFBundleGetInfoString = "nwjs 112.0.5615.49, Copyright 2023 The Chromium Authors, NW.js contributors, Node.js. All rights reserved.";
+NSBluetoothAlwaysUsageDescription = "Sodra Chromium toegang het, sal webwerwe jou kan vra vir toegang.";
+NSBluetoothPeripheralUsageDescription = "Sodra Chromium toegang het, sal webwerwe jou kan vra vir toegang.";
+NSCameraUsageDescription = "Sodra Chromium toegang het, sal webwerwe jou kan vra vir toegang.";
+NSHumanReadableCopyright = "Copyright 2023 The Chromium Authors, NW.js contributors, Node.js. All rights reserved.";
+NSLocationUsageDescription = "Sodra Chromium toegang het, sal webwerwe jou kan vra vir toegang.";
+NSMicrophoneUsageDescription = "Sodra Chromium toegang het, sal webwerwe jou kan vra vir toegang.";

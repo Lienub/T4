@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=None
+Name=T4
+Comment=None
+Exec=bash -c '"$(dirname "$1")"/T4' x %k
+Icon=
+Terminal=false
+Type=Application
+Categories=Utility;Application;
