@@ -58,8 +58,8 @@ this.vente = false;
 // Création du rectangle de fond pour le texte
 this.rectMoney = this.add.rectangle(40, 25, 50, 15, 0xffffff);
 // Création du texte
-const money = this.player.getMoney();
-this.textMoney = this.add.text(this.rectMoney.x, this.rectMoney.y - textOffset, money, style);
+this.money = this.player.getMoney();
+this.textMoney = this.add.text(this.rectMoney.x, this.rectMoney.y - textOffset, 'Money ' +this.money, style);
 // centrer le texte par rapport au rectangle
 Phaser.Display.Align.In.Center(this.textMoney, this.rectMoney);
 
@@ -67,7 +67,7 @@ Phaser.Display.Align.In.Center(this.textMoney, this.rectMoney);
 this.rectAge = this.add.rectangle(100, 25, 50, 15, 0xffffff);
 // Création du texte
 this.age = this.player.getAge();
-this.textAge = this.add.text(this.rectAge.x, this.rectAge.y - textOffset, this.age, style);
+this.textAge = this.add.text(this.rectAge.x, this.rectAge.y - textOffset, 'Age ' + this.age, style);
 // centrer le texte par rapport au rectangle
 Phaser.Display.Align.In.Center(this.textAge, this.rectAge);
 
@@ -94,7 +94,7 @@ this.pnj5 = new PNJ(this,350,400,'pnj',"Un petit tour de cheval, cela vous dit ?
     incrementAge() {
       this.age += 1;
       console.log("Age : " + this.age);
-      this.textAge.setText(this.age);
+      this.textAge.setText('Age '+ this.age);
       this.player.setAge(this.age);
     }
 
@@ -102,8 +102,8 @@ this.pnj5 = new PNJ(this,350,400,'pnj',"Un petit tour de cheval, cela vous dit ?
       this.money += amount;
       console.log("Money : " + this.money);
       this.player.addMoney(this.money);
-      this.textMoney.setText(this.money);
       this.vente = true;
+      this.textMoney.setText('Money ' +this.money);
     }
 
 

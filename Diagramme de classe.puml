@@ -1,4 +1,5 @@
 @startuml
+hide empty members
 
 class Pnj extends Phaser.Physics.Arcade.Sprite{
     - dialogText : String
@@ -76,16 +77,16 @@ class ThirdGameScene extends Phaser.Scene{
  - pnj4: Pnj
  - pnj5: Pnj
 }
-MainScene -> Player
-MainScene -> Pnj
-MainScene -> HitBox
-SecondGameScene -> Player
-SecondGameScene -> Pnj
-SecondGameScene -> HitBox
-ThirdGameScene -> Player
-ThirdGameScene -> Pnj
-ThirdGameScene -> HitBox
-Pnj -> Bubble : instanciate
+MainScene --> Player
+MainScene --> Pnj
+MainScene --> HitBox
+SecondGameScene --> Player
+SecondGameScene --> Pnj
+SecondGameScene --> HitBox
+ThirdGameScene --> Player
+ThirdGameScene --> Pnj
+ThirdGameScene --> HitBox
+Pnj --> Bubble : instanciate
 
 
 @enduml
