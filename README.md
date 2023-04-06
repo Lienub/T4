@@ -6,6 +6,7 @@
   - BOUDJI Djelal
   - DURIEUX Tristan
   - PETT Vincent
+- Lien vers le modèle de CdC : https://docs.google.com/document/d/1zL1XsDvX--1oIr72u8pr35Wtvz7r9zZV1R5VV8w7Wo8/edit?usp=sharing
 - Lien vers le CDC : https://docs.google.com/document/d/1kBEbKzOqdxH2LaxdPOYSaSH5yMCf-24NimNT3ag3_nw/edit?usp=sharing
 - Liens vers les évaluations T4 :
   - [Jawad Amjahad](Evaluation-T4-Jawad_Amjahad.md)
