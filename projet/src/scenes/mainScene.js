@@ -45,7 +45,8 @@ export default class MainScene extends Phaser.Scene {
 
 
     this.onDialog = false;
-
+    this.boulangerie = false;
+    this.chaussure = false;
 
     // Création du timer de 3 secondes
     this.timer = this.time.addEvent({delay: 2000, loop: true});
@@ -103,10 +104,17 @@ incrementAge() {
   this.player.setAge(this.age);
 }
 
-incrementMoney(amount) {
+incrementMoney(amount, type) {
   this.money += amount;
   console.log("Money : " + this.money);
   this.player.addMoney(this.money);
+  
+  if(type == 1){
+    this.boulangerie = true;
+  }
+  if(type == 2){
+    this.chaussure = true;
+  }
   this.textMoney.setText('Money '+ this.money);
 }
 

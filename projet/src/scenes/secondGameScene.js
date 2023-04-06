@@ -53,6 +53,8 @@ background.setScale(
 this.player = new Player(this, 100, 450, this.money, this.age,this.noble);
 console.log(this.player);
 
+this.vente = false;
+
 // Création du rectangle de fond pour le texte
 this.rectMoney = this.add.rectangle(40, 25, 50, 15, 0xffffff);
 // Création du texte
@@ -100,6 +102,7 @@ this.pnj5 = new PNJ(this,350,400,'pnj',"Un petit tour de cheval, cela vous dit ?
       this.money += amount;
       console.log("Money : " + this.money);
       this.player.addMoney(this.money);
+      this.vente = true;
       this.textMoney.setText('Money ' +this.money);
     }
 
