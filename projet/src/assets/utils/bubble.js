@@ -116,36 +116,46 @@ export default class Dialog {
         }
       }
       else if(this.scenario == 5){
-        console.log("type 5")
-        console.log(this.player.money);
-        //L'argent est ajouté au joueur
-        this.scene.incrementMoney(100);
-        //Le joueur devient éligible à devenir noble
-        this.player.noble = true;
-        //Un objet Parchemin avec le texte adéquat est affiché
-        this.scene.parchemin = new Parchment(this.scene, 480, 360, "argent");
-        //se ferme au click
-        this.scene.parchemin.setInteractive();
-        this.scene.parchemin.on('pointerup', () => {
-          console.log("suppresion")
-          this.scene.parchemin.destroy();
-        });
-        this.destroy();
+        if((this.scene.scene.key == 'MainScene' && this.scene.chaussure == false ) || (this.scene.scene.key == 'SecondGameScene' && this.scene.vente == false )){
+          console.log("type 5")
+          console.log(this.player.money);
+          //L'argent est ajouté au joueur
+          if(this.scene.scene.key == 'MainScene'){
+            this.scene.incrementMoney(100, 2);
+          }
+          else{
+            this.scene.incrementMoney(100);
+          }
+          //Le joueur devient éligible à devenir noble
+          this.player.noble = true;
+          //Un objet Parchemin avec le texte adéquat est affiché
+          this.scene.parchemin = new Parchment(this.scene, 480, 360, "argent");
+          //se ferme au click
+          this.scene.parchemin.setInteractive();
+          this.scene.parchemin.on('pointerup', () => {
+            console.log("suppresion")
+            this.scene.parchemin.destroy();
+          });
+          this.destroy();
+        }
       }
       else if(this.scenario == 6){
-        console.log("type 6")
-        //L'argent est ajouté au joueur
-        this.scene.incrementMoney(-99999);
-        this.player.noble = false;
-        //Un objet Parchemin avec le texte adéquat est affiché 
-        this.scene.parchemin = new Parchment(this.scene, 480, 360, "pain");
-        //se ferme au click
-        this.scene.parchemin.setInteractive();
-        this.scene.parchemin.on('pointerup', () => {
-          console.log("sppression")
-          this.scene.parchemin.destroy();
-        });
-        this.destroy();
+        if(this.scene.boulangerie == false)
+        { 
+           console.log("type 6")
+          //L'argent est ajouté au joueur
+          this.scene.incrementMoney(0, 1);
+          this.player.noble = false;
+          //Un objet Parchemin avec le texte adéquat est affiché 
+          this.scene.parchemin = new Parchment(this.scene, 480, 360, "pain");
+          //se ferme au click
+          this.scene.parchemin.setInteractive();
+          this.scene.parchemin.on('pointerup', () => {
+            console.log("sppression")
+            this.scene.parchemin.destroy();
+          });
+          this.destroy();
+        }
       }
   }
 } 

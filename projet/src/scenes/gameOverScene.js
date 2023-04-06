@@ -130,7 +130,7 @@ export default class GameOverScene extends Phaser.Scene {
     }
 
     winGame(){
-        let winGameTewt = 'Vous êtes devenu noble ! Votre engagement pour la noblesse vous a permis de d\'assurer la perennité de votre famille, et votre nom apparait dans tout les registres !';
+        let winGameTewt = 'Vous êtes devenu noble ! Votre engagement pour la noblesse vous a permis d\'assurer la perennité de votre famille, et votre nom apparait dans tout les registres !';
 
         //Winning game text
         this.add.text(this.game.config.width*0.5, this.game.config.height*(-0.2) + 220, 'WIN', {
@@ -156,7 +156,7 @@ export default class GameOverScene extends Phaser.Scene {
     }
 
     moineGame(){
-        let moineGameText = 'Vous êtes devenu moine ! Vous avez donc le temps d\'épargné de l\'argent, et de continuer l\'ascension de votre lignée dans les années à venir !';
+        let moineGameText = 'Vous êtes devenu moine ! Vous avez donc le temps d\'épargner de l\'argent, et de continuer l\'ascension de votre lignée dans les années à venir !';
 
         //Winning game text
         this.add.text(this.game.config.width*0.5, this.game.config.height*(-0.2) + 220, 'MOINE', {
