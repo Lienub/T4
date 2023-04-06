@@ -30,7 +30,7 @@ export default class MenuScene extends Phaser.Scene {
         .on('pointerdown', () => this.scene.start('MainScene'));
 
         // Afficher le texte de présentation
-        const textPresentation = this.add.text(centerX - 450, centerY, 'Bienvenue dans notre Jeu. \nVous allez rentrer dans un univers unique.\nActuellement vous un habitant de la ville d\'Amboise, célèbre ville connue pour son château. \nVotre objectif est d\'intégrer la haute société Amboisienne, \net pour cela il vous faut devenir noble. \nBonne chance à vous !', { fontFamily: 'Fraktur', fontSize: 25, align: 'center' })
+        const textPresentation = this.add.text(centerX - 480, centerY + 10, 'Bienvenue dans notre Jeu. \nVous allez rentrer dans un univers unique.\nActuellement vous êtes un habitant de la ville d\'Amboise, célèbre ville connue pour son château. \nVotre objectif est d\'intégrer la haute société Amboisienne, \net pour cela il vous faut devenir noble. \nBonne chance à vous !', { fontFamily: 'Fraktur', fontSize: 25, align: 'center' })
 
         // // Afficher le bouton "Paramètres"
         // const settingsButton = this.add.text(centerX, centerY + 190, 'Paramètres', { fontFamily: 'Fraktur', fontSize: 40})
