@@ -23,8 +23,11 @@ Les étapes du projet tuteuré T2 sont les suivantes :
 
 # Propositions d'amélioration du jeu
 
-- Proposition 1
+- Proposition 1 :
+  - faire qu'un PNJ au debut nous debrief de maniere implicite notre vie, exemple :
+<<Bonjour jeune chaussetié comment vont vos affaires" ou quelque chose du genre>>
 - Proposition 2
+  - il n'y a probablement pas assé de temps, mais a la toute fin d'une partie gagnante, un recap des traces qu'on a pu laissé
 
 ## Grille d'évaluation T2 (à remplir par les membres du groupe T4)
 
