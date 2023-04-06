@@ -82,14 +82,14 @@ export default class ThirdGameScene extends Phaser.Scene {
     this.pnj5 = new PNJ(this,280,400,'pnj',"J'ai entendu dire que le roi cherchait un chaussetier personne. Se faire engager par le roi ?",true,0,'',this.player);
 
 
-      // Création du bouton
-    const button = this.add.text(400, 50, 'Game Over', { fill: '#0f0' }).setOrigin(0.5);
-    button.setInteractive({ useHandCursor: true });
-    console.log('After create 3ème scène');
-    // Action lors du clic sur le bouton
-    button.on('pointerdown', () => {
-      this.scene.start('GameOverScene', { message: '' });
-    });}
+    //   // Création du bouton
+    // const button = this.add.text(400, 50, 'Game Over', { fill: '#0f0' }).setOrigin(0.5);
+    // button.setInteractive({ useHandCursor: true });
+    // console.log('After create 3ème scène');
+    // // Action lors du clic sur le bouton
+    // button.on('pointerdown', () => {
+    //   this.scene.start('GameOverScene', { message: '' });
+    // });}
 
     incrementMoney(amount) {
       this.money += amount;
