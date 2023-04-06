@@ -1,0 +1,7 @@
+CFBundleGetInfoString = "nwjs 112.0.5615.49, Copyright 2023 The Chromium Authors, NW.js contributors, Node.js. All rights reserved.";
+NSBluetoothAlwaysUsageDescription = "Kun Chromiumilla on käyttöoikeus, sivustot voivat pyytää sitä sinulta.";
+NSBluetoothPeripheralUsageDescription = "Kun Chromiumilla on käyttöoikeus, sivustot voivat pyytää sitä sinulta.";
+NSCameraUsageDescription = "Kun Chromiumilla on käyttöoikeus, sivustot voivat pyytää sitä sinulta.";
+NSHumanReadableCopyright = "Copyright 2023 The Chromium Authors, NW.js contributors, Node.js. All rights reserved.";
+NSLocationUsageDescription = "Kun Chromiumilla on käyttöoikeus, sivustot voivat pyytää sitä sinulta.";
+NSMicrophoneUsageDescription = "Kun Chromiumilla on käyttöoikeus, sivustot voivat pyytää sitä sinulta.";

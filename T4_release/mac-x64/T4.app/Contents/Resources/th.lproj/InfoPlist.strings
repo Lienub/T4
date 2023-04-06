@@ -1,0 +1,7 @@
+CFBundleGetInfoString = "nwjs 112.0.5615.49, Copyright 2023 The Chromium Authors, NW.js contributors, Node.js. All rights reserved.";
+NSBluetoothAlwaysUsageDescription = "เมื่อ Chromium มีสิทธิ์การเข้าถึงแล้ว เว็บไซต์จะขอสิทธิ์การเข้าถึงจากคุณได้";
+NSBluetoothPeripheralUsageDescription = "เมื่อ Chromium มีสิทธิ์การเข้าถึงแล้ว เว็บไซต์จะขอสิทธิ์การเข้าถึงจากคุณได้";
+NSCameraUsageDescription = "เมื่อ Chromium มีสิทธิ์การเข้าถึงแล้ว เว็บไซต์จะขอสิทธิ์การเข้าถึงจากคุณได้";
+NSHumanReadableCopyright = "Copyright 2023 The Chromium Authors, NW.js contributors, Node.js. All rights reserved.";
+NSLocationUsageDescription = "เมื่อ Chromium มีสิทธิ์การเข้าถึงแล้ว เว็บไซต์จะขอสิทธิ์การเข้าถึงจากคุณได้";
+NSMicrophoneUsageDescription = "เมื่อ Chromium มีสิทธิ์การเข้าถึงแล้ว เว็บไซต์จะขอสิทธิ์การเข้าถึงจากคุณได้";

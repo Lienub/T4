@@ -1,0 +1,7 @@
+CFBundleGetInfoString = "nwjs 112.0.5615.49, Copyright 2023 The Chromium Authors, NW.js contributors, Node.js. All rights reserved.";
+NSBluetoothAlwaysUsageDescription = "ఓసారి Chromiumకి యాక్సెస్ లభించాక, ఆపై వెబ్‌సైట్‌లకు ఏమైనా యాక్సెస్‌ కావాలంటే అవి మిమ్మల్ని అడగవచ్చు.";
+NSBluetoothPeripheralUsageDescription = "ఓసారి Chromiumకి యాక్సెస్ లభించాక, ఆపై వెబ్‌సైట్‌లకు ఏమైనా యాక్సెస్‌ కావాలంటే అవి మిమ్మల్ని అడగవచ్చు.";
+NSCameraUsageDescription = "ఓసారి Chromiumకి యాక్సెస్ లభించాక, ఆపై వెబ్‌సైట్‌లకు ఏమైనా యాక్సెస్‌ కావాలంటే అవి మిమ్మల్ని అడగవచ్చు.";
+NSHumanReadableCopyright = "Copyright 2023 The Chromium Authors, NW.js contributors, Node.js. All rights reserved.";
+NSLocationUsageDescription = "ఓసారి Chromiumకి యాక్సెస్ లభించాక, ఆపై వెబ్‌సైట్‌లకు ఏమైనా యాక్సెస్‌ కావాలంటే అవి మిమ్మల్ని అడగవచ్చు.";
+NSMicrophoneUsageDescription = "ఓసారి Chromiumకి యాక్సెస్ లభించాక, ఆపై వెబ్‌సైట్‌లకు ఏమైనా యాక్సెస్‌ కావాలంటే అవి మిమ్మల్ని అడగవచ్చు.";

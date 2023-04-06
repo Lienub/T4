@@ -22,9 +22,9 @@ Le projet T4 est un jeu d'exploration en 2D. Le joueur incarne un chaussetier qu
 
 ## Procédures d'installation et d'exécution
 
-- Télécharger le dossier `T4_Release` sur le dépôt GitHub
-- Aller dans le dossier correspondant à votre système d'exploitation
-- Lancer l'exécutable
+- Aller le dossier [T4_release](T4_release) sur le dépôt GitHub
+- Téléchargez le dossier correspondant à votre système d'exploitation
+- Lancer l'exécutable `T4`
 
 ## Captures d'écran
 
