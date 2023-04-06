@@ -131,7 +131,8 @@ Les commit permette de comprendre tout ce qui a pu se passer.
 Justifications :
 - le jeux s'execute directement (sauf windows defender qui se reveil mais pas leurs faute)
 - il n'y a aucun crash aucune perte de performances
-- certaines touches sont expliqué dans le jeux tant dis que d'autre il faut se renseigner.
+- certaines touches sont expliqué dans le jeux tant dis que d'autre il faut se renseigner. je le compte comme 2pt car meme sans cette chose manquantes le eu est tres instinctif
+
  
 ## Cahier des charges
 - Modèle de document
@@ -208,7 +209,7 @@ Justifications :
 Justifications : il y a 3 type de fin
 
 ## Résultat T4
-- Total d'item « Excellent » (2 point) : 14
+- Total d'item « Excellent » (2 point) : 16
 - Total d'item « Satisfaisant » (1 point) : 9
 - Total d'item « Insatisfaisant » (0 point) : 0
-- total des points (sur 50) : 37
+- total des points (sur 50) : 41
