@@ -156,7 +156,7 @@ export default class GameOverScene extends Phaser.Scene {
     }
 
     moineGame(){
-        let moineGameText = 'Vous êtes devenu moine ! Vous avez donc le temps d\'épargné de l\'argent, et de continuer l\'ascension de votre lignée dans les années à venir !';
+        let moineGameText = 'Vous êtes devenu moine ! Vous avez donc le temps d\'épargner de l\'argent, et de continuer l\'ascension de votre lignée dans les années à venir !';
 
         //Winning game text
         this.add.text(this.game.config.width*0.5, this.game.config.height*(-0.2) + 220, 'MOINE', {
