@@ -208,7 +208,7 @@ Justifications :
 Justifications : il y a 3 type de fin
 
 ## Résultat T4
-- Total d'item « Excellent » (2 point) : 
-- Total d'item « Satisfaisant » (1 point) : 
-- Total d'item « Insatisfaisant » (0 point) :
-- total des points (sur 50) :
+- Total d'item « Excellent » (2 point) : 14
+- Total d'item « Satisfaisant » (1 point) : 9
+- Total d'item « Insatisfaisant » (0 point) : 0
+- total des points (sur 50) : 37
