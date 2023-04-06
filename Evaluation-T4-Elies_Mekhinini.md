@@ -132,6 +132,7 @@ Justifications :
 - le jeux s'execute directement (sauf windows defender qui se reveil mais pas leurs faute)
 - il n'y a aucun crash aucune perte de performances
 - certaines touches sont expliqué dans le jeux tant dis que d'autre il faut se renseigner. je le compte comme 2pt car meme sans cette chose manquantes le eu est tres instinctif
+
  
 ## Cahier des charges
 - Modèle de document
