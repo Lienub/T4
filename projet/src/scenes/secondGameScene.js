@@ -57,9 +57,9 @@ console.log(this.player);
 this.rectMoney = this.add.rectangle(40, 25, 50, 15, 0xffffff);
 // Création du texte
 const money = this.player.getMoney();
-this.textMoney = this.add.text(rectMoney.x, rectMoney.y - textOffset, money, style);
+this.textMoney = this.add.text(this.rectMoney.x, this.rectMoney.y - textOffset, money, style);
 // centrer le texte par rapport au rectangle
-Phaser.Display.Align.In.Center(this.textMoney, rectMoney);
+Phaser.Display.Align.In.Center(this.textMoney, this.rectMoney);
 
 // Création du rectangle de fond pour le texte
 this.rectAge = this.add.rectangle(100, 25, 50, 15, 0xffffff);
@@ -69,8 +69,6 @@ this.textAge = this.add.text(this.rectAge.x, this.rectAge.y - textOffset, this.a
 // centrer le texte par rapport au rectangle
 Phaser.Display.Align.In.Center(this.textAge, this.rectAge);
 
-const nextScene_button = this.add.text(200, 50, 'Next Scene', { fill: '#0f0' }).setOrigin(0.5);
-nextScene_button.setInteractive({ useHandCursor: true });
 console.log('After create 2ème scène');
 
 this.pnj1 = new PNJ(this,860,500,'pnj',"Il se déroule, demain, un séminaire d'apprentissage de la vie spirituel des moines. Souhaitez vous vous y rendre ?",true,2,);
@@ -79,10 +77,6 @@ this.pnj3 = new PNJ(this,580,235,'pnj',"Lors du marché de demain, de nombreuses
 this.pnj4 = new PNJ(this,880,300,'pnj',"On dit que le fils du roi n'est guère intéressé par sa succession", false);
 this.pnj5 = new PNJ(this,350,400,'pnj',"Un petit tour de cheval, cela vous dit ?",true,4,'', this.player);
 
-// Action lors du clic sur le bouton
-nextScene_button.on('pointerdown', () => {
-  this.scene.start('ThirdGameScene', { money: this.player.money, age: this.player.age });
-});
 
 
     // Créer une minuterie qui appelle la fonction incrementAge toutes les 2 secondes

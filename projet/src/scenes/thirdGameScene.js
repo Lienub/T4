@@ -104,7 +104,6 @@ export default class ThirdGameScene extends Phaser.Scene {
         this.noble = false;
       }
     }
-}
 
 incrementAge() {
   this.age += 1;
